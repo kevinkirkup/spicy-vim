@@ -1,0 +1,274 @@
+## THIS IS FOR YUI3, not YUI2!
+# Use this with modeline // vim: set ft=javascript.yui3
+
+#YUI globals
+snippet yui
+	YUI({
+		debug: false,${1}
+		filter: "min",
+	}).use(
+		${2}
+	function(Y){
+		${3}
+	});
+
+snippet yuidebug
+	YUI({
+		debug: true,
+		useBrowserConsole: true,
+		filter: "raw",
+		//logInclude: "#demo",
+		//logExclude: "#demo",
+		//throwFail: true
+	}).use(
+		${2}
+	function(Y){
+		${3}
+	});
+
+snippet class
+	var ${1:Classname} = function(){
+		$1.superclass.constructor.apply(this, arguments);
+	};
+	$1.NAME = "${2:$1}";
+	$1.ATTRS = {
+		${3}
+	};
+	Y.extend($1, Y.Base, {
+		${4}
+	});
+
+#io
+snippet io
+	Y.io(${1:uri}, {
+		method: ${2:GET},
+		data: ${3:data},
+		on: ${4:ioon},
+		form: ${5:ioform},
+		context: ${6:obj},
+		headers: ${7:obj},
+		timeout: ${8: 10*1000},
+		arguments: ${9:val}
+	});
+snippet GET
+	Y.io(${1:uri}, {
+		data: ${2:data},
+		${3:arguments: }
+	});${4}
+snippet GETF
+	Y.io(${1:uri}, {
+		form: {
+			id: ${2:}
+			useDisabled: ${3:false}
+		},
+		${4:arguments: }
+	});${5}
+snippet POST
+	Y.io(${1:uri}, {
+		method: "POST",
+		data: ${2:data},
+		${3:arguments: }
+	});${4}
+snippet POSTF
+	Y.io(${1:uri}, {
+		method: "POST",
+		form: {
+			id: ${2:}
+			useDisabled: ${3:false}
+		},
+		${4:arguments: }
+	});${5}
+snippet PUT
+	Y.io(${1:uri}, {
+		method: "PUT",
+		data: ${2:data},
+		${3:arguments: }
+	});${4}
+snippet DELETE
+	Y.io(${1:uri}, {
+		method: "DELETE",
+		${2:arguments: }
+	});${3}
+
+snippet ioon
+	{
+		start: ${1:this.startHandler},
+		complete: ${2:this.stopHandler},
+		success: ${3:this.successHandler},
+		failure: ${4:this.failureHandler}
+	}${5}
+snippet ioform
+	{
+		id: ${1:},
+		useDisabled: ${2:false}
+	}${3}
+
+#Attributes and friends
+snippet invalid
+	Y.Attribute.INVALID_VALUE
+
+snippet attr Full Attribute
+	${1:name}: {
+		value: ${2},
+		getter: function(storedVal, attrName) {
+			${3}
+		},
+		setter: function(newVal, attrName) {
+			${4}
+		},
+		validator: function(newVal, attrName) {
+			${5}
+		},
+		//readOnly: true,
+		//writeOnce: true,
+	},${6}
+snippet attr Getter
+	${1:name}: {
+		value: ${2},
+		getter: function(storedVal, attrName) {
+			${3}
+		}
+	},${6}
+snippet attr Setter
+	${1:name}: {
+		value: ${2},
+		setter: function(storedVal, attrName) {
+			${3}
+		}
+	},${6}
+snippet attr Read Only
+	${1:name}: {
+		value: ${2},
+		getter: function(storedVal, attrName) {
+			${3}
+		},
+		readOnly: true
+	},${6}
+
+
+#Attr get+set
+snippet get
+	get('${1:name}')${2}
+snippet set
+	set('${1:name}', ${2:true})${3}
+snippet sete
+	set('${1:name}', ${2:true}, {${3:eventMixin}})${4}
+
+#Events!
+snippet on
+	on('${1:AnEvent}', function(e){${2}})${3}
+snippet after
+	after('${1:AnEvent}', function(e){${2}})${3}
+snippet fire
+	fire('${1:AnEvent}'${2:,})${3}
+snippet stop
+	stopPropagation()
+snippet stopi
+	stopImmediatePropagation()
+snippet pd
+	preventDefault();
+
+#Unit Testing
+snippet testcase
+	var test${1:Name} = new Y.Test.Case({
+		name: "${1:} tests",
+
+		test${2:Name}: function(){
+			${3}
+		},${4}
+	});${5}
+
+snippet tfail
+	Y.Assert.fail();${1}
+snippet tt
+	Y.Assert.isTrue(${1});${2}
+snippet tf
+	Y.Assert.isFalse(${1});${2}
+snippet tnan
+	Y.Assert.isNaN(${1});${2}
+snippet t!nan
+	Y.Assert.isNotNaN(${1});${2}
+snippet tnull
+	Y.Assert.isNull(${1});${2}
+snippet t!null
+	Y.Assert.isNotNull(${1});${2}
+snippet tundefined
+	Y.Assert.isUndefined(${1});${2}
+snippet t!undefined
+	Y.Assert.isNotUndefined(${1});${2}
+
+snippet tarray
+	Y.Assert.isArray(${1});${2}
+snippet tbool
+	Y.Assert.isBoolean(${1});${2}
+snippet tfun
+	Y.Assert.isFunction(${1});${2}
+snippet tinstance
+	Y.Assert.isInstanceOf(${1});${2}
+snippet tinstanceof
+	Y.Assert.isInstanceOf(${1});${2}
+snippet tnum
+	Y.Assert.isNumber(${1});${2}
+snippet tobj
+	Y.Assert.isObject(${1});${2}
+snippet tstr
+	Y.Assert.isString(${1});${2}
+snippet ttype
+	Y.Assert.isTypeOf(${1});${2}
+snippet ttypeof
+	Y.Assert.isTypeOf(${1});${2}
+
+
+snippet t==
+	Y.Assert.areEqual(${1:expected}, ${2:actual});${3}
+snippet t!=
+	Y.Assert.areNotEqual(${1:expected}, ${2:actual});${3}
+snippet t===
+	Y.Assert.areSame(${1:expected}, ${2:actual});${3}
+snippet t!==
+	Y.Assert.areNotSame(${1:expected}, ${2:actual});${3}
+
+
+snippet tahas
+	Y.ArrayAssert.contains(${1:needle}, ${2:haystack});${3}
+snippet ta!has
+	Y.ArrayAssert.doesNotContain(${1:needle}, ${2:haystack});${3}
+snippet taall
+	Y.ArrayAssert.containsItems(${1:[needles]}, ${2:haystack});${3}
+snippet ta!all
+	Y.ArrayAssert.doesNotContainItems(${1:[needles]}, ${2:haystack});${3}
+snippet tamatch
+	Y.ArrayAssert.containsMatch(${1:matchFn}, ${2:haystack});${3}
+snippet ta!match
+	Y.ArrayAssert.doesNotContainMatch(${1:matchFn}, ${2:haystack});${3}
+snippet taindex
+	Y.ArrayAssert.indexOf(${1:needle}, ${2:haystack}, ${3:index});${4}
+snippet ta==
+	Y.ArrayAssert.itemsAreEqual(${1:expected}, ${2:actual});${3}
+snippet ta===
+	Y.ArrayAssert.itemsAreSame(${1:expected}, ${2:actual});${3}
+snippet taeq
+	Y.ArrayAssert.itemsAreEquivalent(${1:expected}, ${2:actual});${3}
+snippet taempty
+	Y.ArrayAssert.isEmpty(${1:actual});${2}
+snippet ta!empty
+	Y.ArrayAssert.isNotEmpty(${1:actual});${2}
+
+snippet tohas
+	Y.ObjectAssert.hasKey(${1:key}, ${2:object});${3}
+snippet to==
+	Y.ObjectAssert.areEqual(${1:expected}, ${2:actual});${3}
+snippet toall
+	Y.ObjectAssert.hasKeys(${1:key}, ${2:object});${3}
+snippet toown
+	Y.ObjectAssert.ownsKey(${1:key}, ${2:object});${3}
+snippet toownall
+	Y.ObjectAssert.ownsKeys(${1:key}, ${2:object});${3}
+snippet toempty
+	Y.ObjectAssert.ownsNoKeys(${1:object});${2}
+
+snippet tdateeq
+	Y.DateAssert.datesAreEqual(${1:expected}, ${2:actual});${3}
+snippet ttimeeq
+	Y.DateAssert.timesAreEqual(${1:expected}, ${2:actual});${3}
+

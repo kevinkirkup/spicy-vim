@@ -1,0 +1,118 @@
+$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== development.send-signal ==
+|?LAYER_TAG|_RequestError_t
+  Do_|LAYER_TAG|_|?FUNCTION|(|LAYER_TAG|_|FUNCTION|_t *<CURSOR>)
+{
+  |LAYER_TAG|_RequestError_t result = |LAYER_TAG|_REQUEST_OK;
+  |LAYER_TAG|_Do_|FUNCTION|_t* pDo = NULL;
+  |LAYER_TAG|_Done_|FUNCTION|_t* pDone = NULL;
+  SIGSELECT doneSignalFilter[] = {1, DONE_|LAYER_TAG|_|FUNCTION|_SIG};
+
+  B_(DBG_TRACE2(TRUE, DBG_INFO, "\n%s: Do_|LAYER_TAG|_|FUNCTION|() BEGIN", debugTag);)
+
+  // Make sure process is started
+  result = |LAYER_TAG|_CheckProcessReady();
+
+  if (result == |LAYER_TAG|_REQUEST_OK)
+  {
+    // allocate signal
+    pDo = USB_SA_ALLOC_SIGNAL(|LAYER_TAG|_Do_|FUNCTION|_t, DO_|LAYER_TAG|_|FUNCTION|_SIG);
+
+    // Check for proper memory allocation
+    if (pDo != NULL)
+    {
+      // Send request signal
+      SEND(&pDo, |LAYER_TAG|_Process_);
+
+      // Wait for response signal
+      pDone = RECEIVE_W_TMO(|LAYER_TAG|_RECEIVE_TIMEOUT, doneSignalFilter);
+    }
+
+  }
+
+  // Free response signal
+  if (pDone != NIL)
+  {
+    // Set result code
+    result = pDone->result;
+
+    USB_SA_SIGNAL_FREE(&pDone);
+  }
+  else
+  {
+    // Timeout waiting for the response
+    A_(DBG_TRACE2(TRUE, DBG_WARN, "\n%s: Do_|LAYER_TAG|_|FUNCTION|() Timeout waiting for response signal!", debugTag);)
+    result = |LAYER_TAG|_REQUEST_TIMEOUT;
+  }
+
+  C_(DBG_TRACE3(TRUE, DBG_INFO, "\n%s: Do_|LAYER_TAG|_|FUNCTION|() END[0x%x]", debugTag, result);)
+
+  // Not Implemented
+  return result;
+}
+== development.handle-signal ==
+/**
+ * Handles the SPI DO_|?LAYER_TAG|_|?SIGNAL_NAME|_SIG signal
+ *
+ * @param pSignal |CURSOR|
+ */
+static void
+  |LAYER_TAG|_HandleSignal_|SIGNAL_NAME|(union SIGNAL **pSignal)
+{
+  |LAYER_TAG|_Do_|SIGNAL_NAME|_t* pDo = (|LAYER_TAG|_Do_|SIGNAL_NAME|_t*)*pSignal;
+  |LAYER_TAG|_Done_|SIGNAL_NAME|_t* pDone = NULL;
+
+  // Allocate the response buffer
+  pDone = |?SIGNAL_ALLOC|(|LAYER_TAG|_Done_|SIGNAL_NAME|_t, DONE_|LAYER_TAG|_|SIGNAL_NAME|_SIG);
+  D_ASSERT_(pDone != NULL);
+
+  // Add Data to signal
+
+  // Send the response
+  SEND(&pDone, SENDER(pSignal));
+}
+$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+== development.idbg-symbol-table ==
+IDBG_SYMTBL_START(|?TABLE_NAME)
+  IDBG_SYMTBL_ELEM(|?ELEMENT_NAME|)
+IDBG_SYMTBL_END
+
+== development.idbg-table ==
+//////////////////////////////////////////////////////////////////////
+/// @name Public Methods
+//@{
+IDBG_TBL_START(usb_sa_tbl_spi)
+  IDBG_TBL_CMD(Function, "Command Name")
+IDBG_TBL_END
+//@} End of Public Methods
+
+== development.idbg-command ==
+/**
+ * <CURSOR>
+ *
+ * @param[in] cmd_buf     The command buffer array
+ * @param[in] arg_index   The argument index array
+ * @param[in] args_found  The number of arguments given
+ */
+static void
+  |?LAYER_TAG|_IDbg_|?COMMAND|(char * cmd_buf, int arg_index[], int args_found)
+{
+  |LAYER_TAG|_RequestError_t result = |LAYER_TAG|_REQUEST_OK;
+
+  if (args_found == |?NUM_ARGUMENTS|)
+  {
+    Request_IDbg_Printf(WAIT_RESPONSE, "\nArguments Found: %i, %s", args_found, cmd_buf + arg_index[0]);
+
+    // Handle command
+  }
+  else
+  {
+    Request_IDbg_Printf(WAIT_RESPONSE, "\nUsage: %s <byte_array>", cmd_buf);
+    Request_IDbg_Printf(WAIT_RESPONSE, "\n  <param>: Parameter Description");
+    Request_IDbg_Printf(WAIT_RESPONSE, "\n\nExample: Example");
+    Request_IDbg_Printf(WAIT_RESPONSE, "\nExample Output description");
+  }
+
+  Request_IDbg_Printf(WAIT_RESPONSE, "\n");
+}
+

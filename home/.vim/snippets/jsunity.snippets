@@ -1,0 +1,53 @@
+# Use this with modeline // vim: set ft=javascript.jsunity
+snippet suite
+	var ${1:`substitute(Filename('$1','testSuite'), '\v<(.)(\w*)', '\u\1\2','g')`} = (function(){
+		load("../src/${2}.js");
+		var a = jsUnity.assertions;
+	return {
+		suiteName: "$1",
+		${3}
+	};
+	})();
+snippet texception
+	a.assertException(${1})${2}
+snippet tt
+	a.assertTrue(${1})${2}
+snippet tf
+	a.assertFalse(${1})${2}
+snippet tfail
+	a.fail(${1:message})${2}
+snippet tnull
+	a.assertNull(${1})${2}
+snippet t!null
+	a.assertNotNull(${1})${2}
+snippet tundefined
+	a.assertUndefined(${1})${2}
+snippet t!undefined
+	a.assertNotUndefined(${1})${2}
+snippet tnan
+	a.assertNaN(${1})${2}
+snippet t!nan
+	a.assertNotNaN(${1})${2}
+snippet t===
+	a.assertIdentical(${1:expected}, ${2:actual})${3}
+snippet t!==
+	a.assertNotIdentical(${1:expected}, ${2:actual})${3}
+snippet t==
+	a.assertEqual(${1:expected}, ${2:actual})${3}
+snippet t!=
+	a.assertNotEqual(${1:expected}, ${2:actual})${3}
+snippet tmatch
+	a.assertMatch(${1:regex}, ${2:actual})${3}
+snippet t!match
+	a.assertNotMatch(${1:regex}, ${2:actual})${3}
+snippet ttype
+	a.assertTypeOf(${1:type}, ${2:actual})${3}
+snippet ttypeof
+	a.assertTypeOf(${1:type}, ${2:actual})${3}
+snippet t!type
+	a.assertNotTypeOf(${1:type}, ${2:actual})${3}
+snippet tinstance
+	a.assertInstanceOf(${1:clss}, ${2:actual})${3}
+snippet t!instance
+	a.assertNotInstanceOf(${1:clss}, ${2:actual})${3}
+# comment prevents spurious line break
