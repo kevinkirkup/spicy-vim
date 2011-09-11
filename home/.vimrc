@@ -152,10 +152,10 @@ abbreviate #i #include
 " Set the keymap for the showFunc plugin
 map <F7> <Plug>ShowFunc
 map! <F7> <Plug>ShowFunc
-let g:showfuncctagsbin = "/opt/local/bin/ctags"
+let g:showfuncctagsbin = "/usr/local/bin/ctags"
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tag Menu
-let Tmenu_ctags_cmd = "/opt/local/bin/ctags"
+let Tmenu_ctags_cmd = "/usr/local/bin/ctags"
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
