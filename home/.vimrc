@@ -7,6 +7,13 @@ set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Source local configuration settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(glob("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the default color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme kevin2
