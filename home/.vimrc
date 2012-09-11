@@ -226,6 +226,9 @@ map! <c-l> :ConvertListFile<cr>
 map  <Leader>dd <Esc>:call Delete_End_Spaces()<CR>
 map! <Leader>dd <Esc>:call Delete_End_Spaces()<CR>a
 
+map  <Leader>da <Esc>:call Delete_Application_Log_Crap()<CR>
+map! <Leader>da <Esc>:call Delete_Application_Log_Crap()<CR>a
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Setup the beginning and ending comment box macros
@@ -285,3 +288,9 @@ function Delete_End_Spaces()
   execute ':echo "Spaces Deleted"'
 endfunction
 
+function Delete_Application_Log_Crap()
+  silent execute ':%s/\r/\r/g'
+  silent execute ':g/^$/d'
+  silent execute ':g/ cannot be found. The local computer may not have the necessary registry information or message DLL files to display messages from a remote computer. You may be able to use the /AUXSOURCE= flag to retrieve this description; see Help and Support for details. /d'
+  silent execute ':g/The following information is part of the event: /d'
+endfunction
