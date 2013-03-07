@@ -288,9 +288,27 @@ function Delete_End_Spaces()
   execute ':echo "Spaces Deleted"'
 endfunction
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Function to delete the extra Windows Application Log Crap
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 function Delete_Application_Log_Crap()
-  silent execute ':%s/\r/\r/g'
-  silent execute ':g/^$/d'
-  silent execute ':g/ cannot be found. The local computer may not have the necessary registry information or message DLL files to display messages from a remote computer. You may be able to use the /AUXSOURCE= flag to retrieve this description; see Help and Support for details. /d'
-  silent execute ':g/The following information is part of the event: /d'
+   silent execute ':%s/\r/\r/g'
+   silent execute ':%s/\n]/]/g'
+   silent execute ':%s/\n"/"/g'
+   silent execute ':g/^$/d'
+   silent execute ':%s/ cannot be found. //g'
+   silent execute ':%s/The local computer may not have the necessary registry information or message DLL files to display messages from a remote computer. //g'
+   silent execute ':%s/You may be able to use the \/AUXSOURCE= flag to retrieve this description; see Help and Support for details\. //g'
+   silent execute ':%s/The following information is part of the event: //g'
+   silent execute ':%s/The description for Event ID [0-9]* .*\nIf the event originated.*\nThe following information.*\n//g'
+   silent execute ':%s/\n"/"/g'
+endfunction
+
+                 """"""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Function to reformat the Spinnaker Service Prints
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+function ReformatSpinnakerServicePrints()
+  silent execute ':%s/^<SpinnakerService >\_.\{-}<\/SpinnakerService>\n//g'
+  silent execute ':g/^.*SpinnakerService.*\n/d'
 endfunction
