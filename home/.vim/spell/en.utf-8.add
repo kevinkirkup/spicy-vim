@@ -5,3 +5,6 @@ param
 Mutex
 timestamp
 timecode
+bitstream
+ID3
+ADTS
