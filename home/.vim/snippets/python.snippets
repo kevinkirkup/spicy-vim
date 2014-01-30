@@ -24,6 +24,16 @@ snippet cl
 			${5:super($1, self).__init__()}
 			self.$4 = $4
 			${6}
+# New Test Case
+snippet tc
+	class ${1:ClassName}(${2:unittest.TestCase}):
+		"""${3:docstring for $1}"""
+
+		def setUp(self):
+			${4}
+
+		${5:def tearDown(self):
+			${6}}
 # New Function
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
@@ -38,12 +48,15 @@ snippet defs
 		${3:pass}
 # New Property
 snippet property
-	def ${1:foo}():
-		doc = "${2:The $1 property.}"
-		def fget(self):
-			${3:return self._$1}
-		def fset(self, value):
-			${4:self._$1 = value}
+	@property
+	def ${1:foo}(self):
+		"""Getter for $1"""
+		${2:pass}
+
+	@$1.setter
+	def $1(self, $1):
+		"""Setter for $1"""
+		${3:pass}
 # Lambda
 snippet ld
 	${1:var} = lambda ${2:vars} : ${3:action}
@@ -84,3 +97,20 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+# Context Manager
+snippet defcm
+	def __enter__(self)
+		"""Context Manager Enter Implementation"""
+		${1:return self}
+
+	def __exit__(self, exc_type, exc_inst, exc_tb)
+		"""Context Manager Exit Implementation"""
+		${2:return True}
+snippet repr
+	def __repr__(self):
+		attributes = [
+				${1:self}
+			]
+		parameters = ", ".join([ repr(attribute) for attribute in attributes ])
+		return "%s(%s)" % (self.__class__.__name__, parameters)
+
