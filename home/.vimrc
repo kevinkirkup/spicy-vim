@@ -16,7 +16,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set the default color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme kevin2
+"colorscheme kevin2
+colorscheme blackboard
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
