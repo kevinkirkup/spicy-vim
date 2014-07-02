@@ -147,7 +147,7 @@ command! Tidyxml call DoTidyXml()
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch " Hilight when a search command is entered.
 set fileformat=unix " Set the default file format to dos
-set tildeop         " This treat ~ as a operator for 
+set tildeop         " This treat ~ as a operator for
                     " multiple CAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -239,24 +239,29 @@ abbr #e *************************************************/
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Toggle fold state between closed and opened. 
-" 
-" If there is no fold at current line, just moves forward. 
-" If it is present, reverse it's state. 
-fun! ToggleFold() 
-if foldlevel('.') == 0 
-normal! l 
-else 
-if foldclosed('.') < 0 
-. foldclose 
-else 
-. foldopen 
-endif 
-endif 
-" Clear status line 
-echo 
-endfun 
+" Toggle fold state between closed and opened.
+"
+" If there is no fold at current line, just moves forward.
+" If it is present, reverse it's state.
+fun! ToggleFold()
+if foldlevel('.') == 0
+normal! l
+else
+if foldclosed('.') < 0
+. foldclose
+else
+. foldopen
+endif
+endif
+" Clear status line
+echo
+endfun
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" File Type settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" 4 space indent for python files
+autocmd FileType python setlocal shiftwidth=4 tabstop=4
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Function to convert a list of file paths to
@@ -305,7 +310,6 @@ function Delete_Application_Log_Crap()
    silent execute ':%s/\n"/"/g'
 endfunction
 
-                 """"""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Function to reformat the Spinnaker Service Prints
 """""""""""""""""""""""""""""""""""""""""""""""""""
