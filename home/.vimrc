@@ -7,6 +7,12 @@ set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Pathogen
+""""""""""""""""""""""""""""""""""""""""""""""""""
+execute pathogen#infect()
+filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source local configuration settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(glob("~/.vimrc.local"))
