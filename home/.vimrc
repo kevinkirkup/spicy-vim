@@ -156,17 +156,19 @@ set fileformat=unix " Set the default file format to dos
 set tildeop         " This treat ~ as a operator for
                     " multiple CAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Some abrreviations
 """"""""""""""""""""""""""""""""""""""""""""""""""
-abbreviate #d #define
-abbreviate #i #include
+" abbreviate #d #define
+" abbreviate #i #include
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set the keymap for the showFunc plugin
 map <F7> <Plug>ShowFunc
 map! <F7> <Plug>ShowFunc
 let g:showfuncctagsbin = "/usr/local/bin/ctags"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tag Menu
 let Tmenu_ctags_cmd = "/usr/local/bin/ctags"
@@ -201,8 +203,32 @@ if has ("cscope")
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTree_title = "[File List]"
+let NERDTreeShowHidden=1
+let NERDTreeWinSize=50
 
+" Handler for NERDTree
+function! NERDTree_Start()
+  let b:displayMode = "winmanger"
+  exec 'NERDTree'
+endfunction
+
+function! NERDTree_IsValid()
+  return 1
+endfunction
+
+function! NERDTree_WrapUp()
+  let s:lastCursorRow = line('.')
+  let s:lastCursorColumn = virtcol('.')
+  let s:lastDirectoryDisplayed = b:completePath
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 "Settings for Winmanager
+""""""""""""""""""""""""""""""""""""""""""""""""""
 map <c-w><c-t> :WMToggle<cr>
 map! <c-w><c-t> :WMToggle<cr>
 map <c-w><c-f> :FirstExplorerWindow<cr>
