@@ -236,6 +236,7 @@ map! <c-w><c-f> :FirstExplorerWindow<cr>
 map <c-w><c-b> :BottomExplorerWindow<cr>
 map! <c-w><c-b> :BottomExplorerWindow<cr>
 
+let g:winManagerWidth = 50
 let g:winManagerWindowLayout = 'FileExplorer,TagsExplorer,TagList|BufExplorer'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
