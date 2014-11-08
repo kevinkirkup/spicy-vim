@@ -10,6 +10,7 @@ source $VIMRUNTIME/vimrc_example.vim
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""
 execute pathogen#infect()
+execute pathogen#helptags()
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -27,13 +28,6 @@ colorscheme blackboard
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Author Customization
-" for Snipmate
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:snips_author =  "Kevin S Kirkup"
-let g:snips_email =  "kevin.kirkup@gmail.com"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable spell check
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set spelllang=en_us
@@ -48,13 +42,6 @@ if has("autocmd") && exists("+omnifunc")
         \   setlocal omnifunc=syntaxcomplete#Complete |
         \ endif
 endif
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Nerd Commenter Settings
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDRemoveAltComs=0
-let NERDSpaceDelims=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set the map leader character
@@ -90,6 +77,17 @@ set softtabstop=2
 set smarttab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Python File Type settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" 4 space indent for python files
+autocmd FileType python set shiftwidth=4
+autocmd FileType python set tabstop=4
+autocmd FileType python set softtabstop=4
+autocmd FileType python set smarttab
+autocmd FileType python set expandtab
+autocmd FileType python set autoindent
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Some backup settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
@@ -111,6 +109,20 @@ set nowrap
 set incsearch
 set ruler
 set showcmd
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set some random options
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set hlsearch " Hilight when a search command is entered.
+set fileformat=unix " Set the default file format to dos
+set tildeop         " This treat ~ as a operator for
+                    " multiple CAPS
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Some abrreviations
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" abbreviate #d #define
+" abbreviate #i #include
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Search Up the directory Tree when looking for tags
@@ -140,28 +152,81 @@ map! <S-Insert> <MiddleMouse>
 set wrapscan              " search around end of file
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Command to pretty xml code
+" Snipmate Customization
 """"""""""""""""""""""""""""""""""""""""""""""""""
-func DoTidyXml()
-  silent execute "%!tidy -miq -xml"
-endfunc
-command! Tidyxml call DoTidyXml()
-
+let g:snips_author =  "Kevin S Kirkup"
+let g:snips_email =  "kevin.kirkup@gmail.com"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Set some random options
+" Nerd Commenter Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
-set hlsearch " Hilight when a search command is entered.
-set fileformat=unix " Set the default file format to dos
-set tildeop         " This treat ~ as a operator for
-                    " multiple CAPS
-""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDRemoveAltComs=0
+let NERDSpaceDelims=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Some abrreviations
+" Syntastic Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" abbreviate #d #define
-" abbreviate #i #include
+let g:syntastic_python_checkers = []
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python-Mode Customization
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace() # XXX BREAKPOINT'
+let g:pymode_folding=0
+let g:pymode_options_max_line_length = 160
+
+let g:pymode_lint=1
+let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
+
+let g:pymode_lint_on_write=1
+let g:pymode_lint_on_fly=1
+let g:pymode_lint_ignore=""
+let g:pymode_lint_cwindow=1
+
+autocmd FileType python map  <Leader>pt <Esc>  :PymodeLintToggle<CR>
+autocmd FileType python map! <Leader>pt <Esc>  :PymodeLintToggle<CR>
+autocmd FileType python map  <Leader>pl <Esc>  :PymodeLint<CR>
+autocmd FileType python map! <Leader>pl <Esc>  :PymodeLint<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTree_title = "[NERD Tree]"
+let NERDTreeShowHidden=1
+let NERDTreeWinSize=50
+
+map  <Leader>nt <Esc>  :NERDTreeToggle<CR>
+map! <Leader>nt <Esc>  :NERDTreeToggle<CR>
+
+" Handler for NERDTree
+function! NERDTree_Start()
+  let b:displayMode = "winmanger"
+  exec 'NERDTree'
+endfunction
+
+function! NERDTree_IsValid()
+  return 1
+endfunction
+
+function! NERDTree_WrapUp()
+  let s:lastCursorRow = line('.')
+  let s:lastCursorColumn = virtcol('.')
+  let s:lastDirectoryDisplayed = b:completePath
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"Settings for Winmanager
+""""""""""""""""""""""""""""""""""""""""""""""""""
+map <c-w><c-t> :WMToggle<cr>
+map! <c-w><c-t> :WMToggle<cr>
+
+map <c-w><c-f> :FirstExplorerWindow<cr>
+map! <c-w><c-f> :FirstExplorerWindow<cr>
+map <c-w><c-b> :BottomExplorerWindow<cr>
+map! <c-w><c-b> :BottomExplorerWindow<cr>
+
+let g:winManagerWidth = 50
+let g:winManagerWindowLayout = 'FileExplorer,TagsExplorer,TagList|BufExplorer'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set the keymap for the showFunc plugin
@@ -173,6 +238,15 @@ let g:showfuncctagsbin = "/usr/local/bin/ctags"
 " Tag Menu
 let Tmenu_ctags_cmd = "/usr/local/bin/ctags"
 """"""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Command to pretty xml code
+""""""""""""""""""""""""""""""""""""""""""""""""""
+func DoTidyXml()
+  silent execute "%!tidy -miq -xml"
+endfunc
+command! Tidyxml call DoTidyXml()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Function recursively find the Cscope database file
@@ -203,41 +277,6 @@ if has ("cscope")
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTree_title = "[File List]"
-let NERDTreeShowHidden=1
-let NERDTreeWinSize=50
-
-" Handler for NERDTree
-function! NERDTree_Start()
-  let b:displayMode = "winmanger"
-  exec 'NERDTree'
-endfunction
-
-function! NERDTree_IsValid()
-  return 1
-endfunction
-
-function! NERDTree_WrapUp()
-  let s:lastCursorRow = line('.')
-  let s:lastCursorColumn = virtcol('.')
-  let s:lastDirectoryDisplayed = b:completePath
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-"Settings for Winmanager
-""""""""""""""""""""""""""""""""""""""""""""""""""
-map <c-w><c-t> :WMToggle<cr>
-map! <c-w><c-t> :WMToggle<cr>
-map <c-w><c-f> :FirstExplorerWindow<cr>
-map! <c-w><c-f> :FirstExplorerWindow<cr>
-map <c-w><c-b> :BottomExplorerWindow<cr>
-map! <c-w><c-b> :BottomExplorerWindow<cr>
-
-let g:winManagerWidth = 50
-let g:winManagerWindowLayout = 'FileExplorer,TagsExplorer,TagList|BufExplorer'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Eatchar function for the Abbreviations
@@ -290,11 +329,6 @@ endif
 echo
 endfun
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" File Type settings
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" 4 space indent for python files
-autocmd FileType python setlocal shiftwidth=4 tabstop=4
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Function to convert a list of file paths to
