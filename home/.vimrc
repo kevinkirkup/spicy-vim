@@ -232,11 +232,11 @@ let g:winManagerWindowLayout = 'FileExplorer,TagsExplorer,TagList|BufExplorer'
 " Set the keymap for the showFunc plugin
 map <F7> <Plug>ShowFunc
 map! <F7> <Plug>ShowFunc
-let g:showfuncctagsbin = substitute(system('which ctags'), '\n', '', '')
+let g:showfuncctagsbin = '/usr/local/bin/ctags'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tag Menu
-let Tmenu_ctags_cmd = substitute(system('which ctags'), '\n', '', '')
+let Tmenu_ctags_cmd = '/usr/local/bin/ctags'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 
