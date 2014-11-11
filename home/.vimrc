@@ -238,6 +238,7 @@ let g:showfuncctagsbin = '/usr/local/bin/ctags'
 " Dash Configuration settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>dg <Plug>DashGlobalSearch
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tag Menu
