@@ -16,3 +16,6 @@
 [submodule "home/.vim/bundle/python-mode"]
 	path = home/.vim/bundle/python-mode
 	url = https://github.com/klen/python-mode.git
+[submodule "home/.vim/bundle/dash"]
+	path = home/.vim/bundle/dash
+	url = https://github.com/rizzatti/dash.vim.git
