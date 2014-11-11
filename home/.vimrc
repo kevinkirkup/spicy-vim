@@ -235,6 +235,11 @@ map! <F7> <Plug>ShowFunc
 let g:showfuncctagsbin = '/usr/local/bin/ctags'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Dash Configuration settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <silent> <leader>d <Plug>DashSearch
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tag Menu
 let Tmenu_ctags_cmd = '/usr/local/bin/ctags'
 """"""""""""""""""""""""""""""""""""""""""""""""""
