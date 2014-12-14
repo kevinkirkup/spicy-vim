@@ -182,12 +182,20 @@ let g:pymode_lint_on_fly=0
 let g:pymode_lint_ignore=""
 let g:pymode_lint_cwindow=1
 
-let g:pymode_rope_lookup_project=0
+" Disable rope since we are using YouCompleteMe
+let g:pymode_rope=0
+"let g:pymode_rope_lookup_project=0
 
 autocmd FileType python map  <Leader>pt <Esc>  :PymodeLintToggle<CR>
 autocmd FileType python map! <Leader>pt <Esc>  :PymodeLintToggle<CR>
 autocmd FileType python map  <Leader>pl <Esc>  :PymodeLint<CR>
 autocmd FileType python map! <Leader>pl <Esc>  :PymodeLint<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" You Complete Me
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree configuration
