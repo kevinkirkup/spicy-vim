@@ -6,6 +6,11 @@
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 
+" Add Powerline statusline
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""
