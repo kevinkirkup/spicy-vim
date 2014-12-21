@@ -25,12 +25,17 @@ if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
+" no undofile
+set noundofile
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set the default color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "colorscheme kevin2
 colorscheme blackboard
 syntax enable
+set guifont=PragmataPro:h12
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Enable spell check
@@ -114,6 +119,11 @@ set nowrap
 set incsearch
 set ruler
 set showcmd
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Always show statusline
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set some random options
