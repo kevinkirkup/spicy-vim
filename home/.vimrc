@@ -219,8 +219,8 @@ let g:NERDTree_title = "[NERD Tree]"
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
 
-map  <Leader>nt <Esc>  :NERDTreeToggle<CR>
-map! <Leader>nt <Esc>  :NERDTreeToggle<CR>
+map <c-w><c-t> :NERDTreeToggle<CR>
+map! <c-w><c-t> :NERDTreeToggle<CR>
 
 " Handler for NERDTree
 function! NERDTree_Start()
@@ -239,36 +239,15 @@ function! NERDTree_WrapUp()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"Settings for Winmanager
+" Tag List
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 """"""""""""""""""""""""""""""""""""""""""""""""""
-map <c-w><c-t> :WMToggle<cr>
-map! <c-w><c-t> :WMToggle<cr>
-
-map <c-w><c-f> :FirstExplorerWindow<cr>
-map! <c-w><c-f> :FirstExplorerWindow<cr>
-map <c-w><c-b> :BottomExplorerWindow<cr>
-map! <c-w><c-b> :BottomExplorerWindow<cr>
-
-let g:winManagerWidth = 50
-let g:winManagerWindowLayout = 'FileExplorer,TagsExplorer,TagList|BufExplorer'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set the keymap for the showFunc plugin
-map <F7> <Plug>ShowFunc
-map! <F7> <Plug>ShowFunc
-let g:showfuncctagsbin = '/usr/local/bin/ctags'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Dash Configuration settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>d <Plug>DashSearch
 nmap <silent> <leader>dg <Plug>DashGlobalSearch
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tag Menu
-let Tmenu_ctags_cmd = '/usr/local/bin/ctags'
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Command to pretty xml code
