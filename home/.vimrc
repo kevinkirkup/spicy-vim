@@ -143,6 +143,11 @@ set tildeop         " This treat ~ as a operator for
 " Search Up the directory Tree when looking for tags
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set tags=tags;/
+
+" CTRL-P Tag searching
+map  <Leader>.  <Esc>  :CtrlPTag<CR>
+map! <Leader>.  <Esc>  :CtrlPTag<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Make external commands work through a pipe instead of a pseudo-tty
 "   This one came from the following website:
