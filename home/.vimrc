@@ -176,6 +176,16 @@ set wrapscan              " search around end of file
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:snips_author =  "Kevin S Kirkup"
 let g:snips_email =  "kevin.kirkup@gmail.com"
+let g:snips_github =  "kevinkirkup"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ultisnips
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Nerd Commenter Settings

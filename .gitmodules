@@ -28,3 +28,9 @@
 [submodule "home/.vim/bundle/YouCompleteMe"]
 	path = home/.vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "home/.vim/bundle/vim-snippets"]
+	path = home/.vim/bundle/vim-snippets
+	url = https://github.com/kevinkirkup/vim-snippets.git
+[submodule "home/.vim/bundle/ultisnips"]
+	path = home/.vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
