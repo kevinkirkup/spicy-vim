@@ -225,8 +225,10 @@ autocmd FileType python map! <Leader>pl <Esc>  :PymodeLint<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " You Complete Me
 """"""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+let g:ycm_key_list_select_completion=['<C-TAB>', '<Down>']
+let g:ycm_key_list_previous_completion=['<C-S-TAB>', '<Up>']
+
+let g:SuperTabDefaultComplettionType = '<C-Tab>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree configuration
