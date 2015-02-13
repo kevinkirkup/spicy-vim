@@ -40,3 +40,6 @@
 [submodule "home/.vim/bundle/vim-lldb"]
 	path = home/.vim/bundle/vim-lldb
 	url = https://github.com/gilligan/vim-lldb.git
+[submodule "home/.vim/bundle/ack"]
+	path = home/.vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git

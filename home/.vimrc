@@ -110,6 +110,7 @@ set nobackup
 set shellpipe=\|\ tee
 set grepprg=grep\ -n
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Show the line numbers when a file is opened
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,7 +173,14 @@ map! <S-Insert> <MiddleMouse>
 set wrapscan              " search around end of file
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Snipmate Customization
+" Ack
+""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Snipmate
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:snips_author =  "Kevin S Kirkup"
 let g:snips_email =  "kevin.kirkup@gmail.com"
