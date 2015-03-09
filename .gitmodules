@@ -43,3 +43,6 @@
 [submodule "home/.vim/bundle/ack"]
 	path = home/.vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "home/.vim/bundle/Vim-R-plugin"]
+	path = home/.vim/bundle/Vim-R-plugin
+	url = https://github.com/vim-scripts/Vim-R-plugin.git
