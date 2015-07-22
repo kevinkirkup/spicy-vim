@@ -48,4 +48,4 @@
 	url = https://github.com/vim-scripts/Vim-R-plugin.git
 [submodule "home/.vim/bundle/command-t"]
 	path = home/.vim/bundle/command-t
-	url = git://git.wincent.com/command-t.git
+	url = https://githum.com/wincent/command-t.git
