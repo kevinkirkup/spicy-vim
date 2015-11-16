@@ -67,8 +67,8 @@ let g:mapleader = '\'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Change the default windows size
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"set lines=60
-"set columns=200
+"set lines=50
+"set columns=300
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Shows 2 lines between the cursor and the new line
@@ -85,6 +85,24 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set smarttab
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Haskell settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+map <silent> <Leader>e :Errors<CR>
+map <Leader>s :SyntasticToggleMode<CR>
+
+let g:syntastic_auto_loc_list=1
+
+" Reload
+map <silent> tu :call GHC_BrowseAll()<CR>
+" Type Lookup
+map <silent> tw :call GHC_ShowType(1)<CR>
+
+nmap <leader>= :TagbarToggle<CR>
+let g:tagbar_autofocus=1
+
+autocmd BufEnter *.hs set formatprg=pointfree
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Python File Type settings
@@ -178,6 +196,12 @@ set wrapscan              " search around end of file
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" clang_complete
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'ultisnips'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Snipmate
