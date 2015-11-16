@@ -49,3 +49,18 @@
 [submodule "home/.vim/bundle/command-t"]
 	path = home/.vim/bundle/command-t
 	url = https://githum.com/wincent/command-t.git
+[submodule "home/.vim/bundle/Vim-Jinja2-Syntax"]
+	path = home/.vim/bundle/Vim-Jinja2-Syntax
+	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
+[submodule "home/.vim/bundle/clang_complete"]
+	path = home/.vim/bundle/clang_complete
+	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule "home/.vim/bundle/ios"]
+	path = home/.vim/bundle/ios
+	url = https://github.com/eraserhd/vim-ios.git
+[submodule "home/.vim/bundle/cocoa"]
+	path = home/.vim/bundle/cocoa
+	url = https://github.com/msanders/cocoa.vim.git
+[submodule "home/.vim/bundle/vim-swift"]
+	path = home/.vim/bundle/vim-swift
+	url = https://github.com/Keithbsmiley/swift.vim.git
