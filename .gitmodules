@@ -1,66 +1,86 @@
 [submodule "home/.vim/bundle/nerdcommenter"]
 	path = home/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+	branch = master
 [submodule "home/.vim/bundle/nerdtree"]
 	path = home/.vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+	branch = master
 [submodule "home/.vim/bundle/syntastic"]
 	path = home/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+	branch = master
 [submodule "home/.vim/bundle/vim-surround"]
 	path = home/.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+	branch = master
 [submodule "home/.vim/bundle/vim-coffee-script"]
 	path = home/.vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+	branch = master
 [submodule "home/.vim/bundle/python-mode"]
 	path = home/.vim/bundle/python-mode
 	url = https://github.com/klen/python-mode.git
+	branch = master
 [submodule "home/.vim/bundle/dash"]
 	path = home/.vim/bundle/dash
 	url = https://github.com/rizzatti/dash.vim.git
+	branch = master
 [submodule "home/.vim/bundle/ctrlp.vim"]
 	path = home/.vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+	branch = master
 [submodule "home/.vim/bundle/vim-fugitive"]
 	path = home/.vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+	branch = master
 [submodule "home/.vim/bundle/YouCompleteMe"]
 	path = home/.vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+	branch = master
 [submodule "home/.vim/bundle/vim-snippets"]
 	path = home/.vim/bundle/vim-snippets
 	url = https://github.com/kevinkirkup/vim-snippets.git
+	branch = master
 [submodule "home/.vim/bundle/ultisnips"]
 	path = home/.vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+	branch = master
 [submodule "home/.vim/bundle/supertab"]
 	path = home/.vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+	branch = master
 [submodule "home/.vim/bundle/vim-lldb"]
 	path = home/.vim/bundle/vim-lldb
 	url = https://github.com/gilligan/vim-lldb.git
+	branch = master
 [submodule "home/.vim/bundle/ack"]
 	path = home/.vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "home/.vim/bundle/Vim-R-plugin"]
 	path = home/.vim/bundle/Vim-R-plugin
 	url = https://github.com/vim-scripts/Vim-R-plugin.git
+	branch = master
 [submodule "home/.vim/bundle/command-t"]
 	path = home/.vim/bundle/command-t
-	url = https://githum.com/wincent/command-t.git
+	url = https://github.com/wincent/command-t.git
 [submodule "home/.vim/bundle/Vim-Jinja2-Syntax"]
 	path = home/.vim/bundle/Vim-Jinja2-Syntax
 	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
+	branch = master
 [submodule "home/.vim/bundle/clang_complete"]
 	path = home/.vim/bundle/clang_complete
 	url = https://github.com/Rip-Rip/clang_complete.git
+	branch = master
 [submodule "home/.vim/bundle/ios"]
 	path = home/.vim/bundle/ios
 	url = https://github.com/eraserhd/vim-ios.git
+	branch = master
 [submodule "home/.vim/bundle/cocoa"]
 	path = home/.vim/bundle/cocoa
 	url = https://github.com/msanders/cocoa.vim.git
+	branch = master
 [submodule "home/.vim/bundle/vim-swift"]
 	path = home/.vim/bundle/vim-swift
 	url = https://github.com/Keithbsmiley/swift.vim.git
+	branch = master

@@ -5,6 +5,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
+"set verbose=2
 
 " Add Powerline statusline
 python from powerline.vim import setup as powerline_setup
@@ -90,9 +91,6 @@ set smarttab
 " Haskell settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> <Leader>e :Errors<CR>
-map <Leader>s :SyntasticToggleMode<CR>
-
-let g:syntastic_auto_loc_list=1
 
 " Reload
 map <silent> tu :call GHC_BrowseAll()<CR>
@@ -229,7 +227,10 @@ let NERDSpaceDelims=1
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>s :SyntasticToggleMode<CR>
+
 let g:syntastic_python_checkers = []
+let g:syntastic_auto_loc_list = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Python-Mode Customization
