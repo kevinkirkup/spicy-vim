@@ -84,3 +84,6 @@
 	path = home/.vim/bundle/vim-swift
 	url = https://github.com/Keithbsmiley/swift.vim.git
 	branch = master
+[submodule "home/.vim/bundle/hspec"]
+	path = home/.vim/bundle/hspec
+	url = https://github.com/hspec/hspec.vim
