@@ -235,6 +235,7 @@ map <Leader>s :SyntasticToggleMode<CR>
 
 let g:syntastic_python_checkers = []
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_python_pylint_post_args="--max-line-length=160"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Python-Mode Customization
@@ -249,6 +250,9 @@ let g:pymode_lint_on_write=1
 let g:pymode_lint_on_fly=0
 let g:pymode_lint_ignore=""
 let g:pymode_lint_cwindow=1
+
+let g:pymode_lint_options_pylint =
+  \ {'max-line-length': g:pymode_options_max_line_length}
 
 " Disable rope since we are using YouCompleteMe
 let g:pymode_rope=0
