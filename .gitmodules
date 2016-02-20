@@ -87,3 +87,6 @@
 [submodule "home/.vim/bundle/hspec"]
 	path = home/.vim/bundle/hspec
 	url = https://github.com/hspec/hspec.vim
+[submodule "home/.vim/bundle/rust.vim"]
+	path = home/.vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
