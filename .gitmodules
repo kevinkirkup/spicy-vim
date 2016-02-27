@@ -90,3 +90,6 @@
 [submodule "home/.vim/bundle/rust.vim"]
 	path = home/.vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule "home/.vim/bundle/vim-autoformat"]
+	path = home/.vim/bundle/vim-autoformat
+	url = https://github.com/Chiel92/vim-autoformat.git

@@ -64,6 +64,11 @@ let g:mapleader = '\'
 "else
 "  echo "  <leader> = " . g:mapleader
 "endif
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autoformat Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>f :Autoformat<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Change the default windows size
@@ -128,6 +133,18 @@ let g:rust_bang_comment_leader=1
 " $ cargo install rustfmt
 let g:rustfmt_autosave=1
 
+" Autoformat setting
+let g:formatdef_rustfmt = '"rustfmt"'
+let g:formatters_rust = ['rustfmt']
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" HTML Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" XML Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" tidy -miq -xml"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Some backup settings
@@ -328,14 +345,6 @@ let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>d <Plug>DashSearch
 nmap <silent> <leader>dg <Plug>DashGlobalSearch
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Command to pretty xml code
-""""""""""""""""""""""""""""""""""""""""""""""""""
-func DoTidyXml()
-  silent execute "%!tidy -miq -xml"
-endfunc
-command! Tidyxml call DoTidyXml()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Function recursively find the Cscope database file
