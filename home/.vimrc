@@ -68,7 +68,7 @@ let g:mapleader = '\'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Autoformat Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader>f :Autoformat<CR>
+nmap <D-f> :Autoformat<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Change the default windows size
@@ -136,6 +136,12 @@ let g:rustfmt_autosave=1
 " Autoformat setting
 let g:formatdef_rustfmt = '"rustfmt"'
 let g:formatters_rust = ['rustfmt']
+
+" Keymaps
+autocmd FileType rust nmap <D-r> :RustRun<CR>
+
+autocmd FileType rust nmap! <D-b>
+autocmd FileType rust nmap  <D-f> :RustFmt<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " HTML Settings
