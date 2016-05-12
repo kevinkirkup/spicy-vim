@@ -138,10 +138,12 @@ let g:formatdef_rustfmt = '"rustfmt"'
 let g:formatters_rust = ['rustfmt']
 
 " Keymaps
-autocmd FileType rust nmap <D-r> :RustRun<CR>
 
-autocmd FileType rust nmap! <D-b>
-autocmd FileType rust nmap  <D-f> :RustFmt<CR>
+"autocmd FileType rust unmap <D-r>
+"autocmd FileType rust unmap <D-f>
+
+autocmd FileType rust nmap <Leader>r :RustRun<CR>
+autocmd FileType rust nmap <Leader>f :RustFmt<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " HTML Settings
