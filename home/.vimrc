@@ -68,7 +68,7 @@ let g:mapleader = '\'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Autoformat Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
-nmap <D-f> :Autoformat<CR>
+nmap <Leader>f :Autoformat<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Change the default windows size
