@@ -93,6 +93,12 @@ set softtabstop=2
 set smarttab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Clang Format
+""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>
+imap <C-K> <c-o>:pyf /usr/local/share/clang/clang-format.py<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Haskell settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> <Leader>e :Errors<CR>
