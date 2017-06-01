@@ -35,3 +35,15 @@ submodule
 username
 initializer
 Whitespace
+playlists
+PIDs
+Codec
+segmenter
+segmenters
+ConstExpr
+demux
+remux
+remuxer
+PMT
+syncword
+timeline
