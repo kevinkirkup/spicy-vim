@@ -110,3 +110,6 @@
 [submodule "home/.vim/bundle/vim-go"]
 	path = home/.vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule "home/.vim/bundle/vim-multiple-cursors"]
+	path = home/.vim/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
