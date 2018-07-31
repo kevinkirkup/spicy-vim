@@ -1,11 +1,15 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:   Kevin S Kirkup
-" LastChanged:  Feb 28 2005
+" LastChanged:  Jul 31 2018
 " Website:      None
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 "source $VIMRUNTIME/vimrc_example.vim
 "set verbose=2
+
+" Silence imp deprecation warnings for python 3
+" https://github.com/Valloric/YouCompleteMe/issues/3062
+silent! py3 pass
 
 " Add Powerline statusline
 python3 from powerline.vim import setup as powerline_setup
