@@ -4,13 +4,13 @@
 " Website:      None
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/vimrc_example.vim
 "set verbose=2
 
 " Add Powerline statusline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen
@@ -97,6 +97,10 @@ set smarttab
 """"""""""""""""""""""""""""""""""""""""""""""""""
 map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>
 imap <C-K> <c-o>:pyf /usr/local/share/clang/clang-format.py<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Erlang settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Haskell settings
