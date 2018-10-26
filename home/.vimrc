@@ -7,6 +7,11 @@ set nocompatible
 "source $VIMRUNTIME/vimrc_example.vim
 "set verbose=2
 
+" Get the OS version
+"
+let os=substitute(system('uname'), '\n', '', '')
+echo "OS Version: " + os
+
 " Silence imp deprecation warnings for python 3
 " https://github.com/Valloric/YouCompleteMe/issues/3062
 silent! py3 pass
@@ -264,7 +269,12 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'ultisnips'
-let g:clang_library_path = '/usr/local/lib/'
+
+if os == 'Darwin'
+  let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+elseif os == 'Linux'
+  let g:clang_library_path = '/usr/local/lib/'
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Snipmate
