@@ -10,7 +10,6 @@ set nocompatible
 " Get the OS version
 "
 let os=substitute(system('uname'), '\n', '', '')
-echo "OS Version: " + os
 
 " Silence imp deprecation warnings for python 3
 " https://github.com/Valloric/YouCompleteMe/issues/3062
@@ -276,6 +275,9 @@ elseif os == 'Linux'
   let g:clang_library_path = '/usr/local/lib/'
 endif
 
+let g:clang_complete_auto = 1
+let g:clang_user_options = '-std=c++14'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Snipmate
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -316,7 +318,7 @@ let g:typescript_indent_disable = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""
 map <Leader>s :SyntasticToggleMode<CR>
 
-let g:syntastic_python_checkers = []
+let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_pylint_post_args="--max-line-length=160"
 
