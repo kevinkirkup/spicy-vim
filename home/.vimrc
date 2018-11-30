@@ -141,6 +141,12 @@ autocmd BufEnter *.hs set formatprg=pointfree
 " autocmd FileType python set autoindent
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Javascript File Type settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType javascript set shiftwidth=4
+autocmd FileType javascript set softtabstop=4
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Rust File Type settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let g:rustc_path="/usr/local/bin/rustc"
