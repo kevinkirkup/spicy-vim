@@ -109,3 +109,9 @@
 [submodule "home/.vim/bundle/vim-multiple-cursors"]
 	path = home/.vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "home/.vim/bundle/vim-gradle"]
+	path = home/.vim/bundle/vim-gradle
+	url = https://github.com/tfnico/vim-gradle
+[submodule "home/.vim/bundle/kotlin-vim"]
+	path = home/.vim/bundle/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim
