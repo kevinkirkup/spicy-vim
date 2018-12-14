@@ -115,3 +115,6 @@
 [submodule "home/.vim/bundle/kotlin-vim"]
 	path = home/.vim/bundle/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim
+[submodule "home/.vim/bundle/vim-terraform"]
+	path = home/.vim/bundle/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git

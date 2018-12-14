@@ -101,6 +101,11 @@ set softtabstop=2
 set smarttab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Terraform
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:terraform_fmt_on_save=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clang Format
 """"""""""""""""""""""""""""""""""""""""""""""""""
 map <C-K> :pyf /usr/local/share/clang/clang-format.py<CR>
