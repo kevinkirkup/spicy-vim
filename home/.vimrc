@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""
+", """""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:   Kevin S Kirkup
 " LastChanged:  Jul 31 2018
 " Website:      None
@@ -144,6 +144,17 @@ autocmd BufEnter *.hs set formatprg=pointfree
 " autocmd FileType python set smarttab
 " autocmd FileType python set expandtab
 " autocmd FileType python set autoindent
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Kotlin File Type settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" 4 space indent
+autocmd FileType kotlin set shiftwidth=4
+autocmd FileType kotlin set tabstop=4
+autocmd FileType kotlin set softtabstop=4
+autocmd FileType kotlin set smarttab
+autocmd FileType kotlin set expandtab
+autocmd FileType kotlin set autoindent
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Javascript File Type settings
@@ -336,6 +347,7 @@ let g:syntastic_python_pylint_post_args="--max-line-length=160"
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Python-Mode Customization
 """"""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_python = 'python3'
 let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace() # XXX BREAKPOINT'
 let g:pymode_folding=0
 let g:pymode_options_max_line_length = 160
