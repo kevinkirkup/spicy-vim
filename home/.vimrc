@@ -318,6 +318,14 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd vimenter * NERDTree
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Nerd Commenter Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 let NERDRemoveAltComs=0
