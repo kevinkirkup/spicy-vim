@@ -30,6 +30,10 @@ def SortImports():
     # Move it to the first import statement
     start = start + 1
 
+    # End is at the last line, we want this to be the blank
+    # line after the import list
+    end = end + 1
+
     # Sort the lines in the provided range
     imports = sorted(buffer_lines[start:end])
 
@@ -39,3 +43,5 @@ def SortImports():
 
 EOL
 map <F6> :python3 SortImports()<CR>
+
+autocmd BufWrite *.kt :python3 SortImports()
