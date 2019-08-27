@@ -57,3 +57,8 @@ detekt
 CIDR
 UUID
 Pureport
+indices
+indices
+accessor
+YAML
+serializer
