@@ -14,10 +14,6 @@
 	path = home/.vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 	branch = master
-[submodule "home/.vim/bundle/vim-coffee-script"]
-	path = home/.vim/bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
-	branch = master
 [submodule "home/.vim/bundle/python-mode"]
 	path = home/.vim/bundle/python-mode
 	url = https://github.com/klen/python-mode.git
@@ -114,3 +110,15 @@
 [submodule "home/.vim/bundle/vim-terraform"]
 	path = home/.vim/bundle/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule "home/.vim/bundle/vim-repeat"]
+	path = home/.vim/bundle/vim-repeat
+	url = https://tpope.io/vim/repeat.git
+[submodule "home/.vim/bundle/investigate.vim"]
+	path = home/.vim/bundle/investigate.vim
+	url = https://github.com/keith/investigate.vim.git
+[submodule "home/.vim/bundle/tbone.vim"]
+	path = home/.vim/bundle/tbone.vim
+	url = https://github.com/tpope/vim-tbone.git
+[submodule "home/.vim/bundle/vim-dadbod"]
+	path = home/.vim/bundle/vim-dadbod
+	url = https://github.com/tpope/vim-dadbod.git
