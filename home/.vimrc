@@ -78,6 +78,9 @@ let g:mapleader = '\'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader>f :Autoformat<CR>
 
+let g:formatdef_kotlin = '"kotlint -F"'
+let g:formatters_kt = ['kotlin']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Change the default windows size
 """"""""""""""""""""""""""""""""""""""""""""""""""
