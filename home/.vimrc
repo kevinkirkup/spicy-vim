@@ -21,6 +21,12 @@ python3 powerline_setup()
 python3 del powerline_setup
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Airline configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:airline_theme='tomorrow'
+let g:airline_theme='powerlineish'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""
 execute pathogen#infect()
