@@ -1,8 +1,9 @@
 ", """""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:   Kevin S Kirkup
-" LastChanged:  Jul 31 2018
+" LastChanged:  2019-10-25
 " Website:      None
 """"""""""""""""""""""""""""""""""""""""""""""""""
+
 set nocompatible
 "source $VIMRUNTIME/vimrc_example.vim
 "set verbose=2
@@ -84,9 +85,6 @@ let g:mapleader = '\'
 """"""""""""""""""""""""""""""""""""""""""""""""""
 nmap <Leader>f :Autoformat<CR>
 
-let g:formatdef_kotlin = '"kotlint -F"'
-let g:formatters_kt = ['kotlin']
-
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Change the default windows size
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -125,74 +123,10 @@ imap <C-K> <c-o>:pyf /usr/local/share/clang/clang-format.py<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Haskell settings
+" Pymode settings
 """"""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <Leader>e :Errors<CR>
+let g:pymode_python = 'python3'
 
-highlight link hspecDescribe Type
-highlight link hspecIt Identifier
-highlight link hspecDescription Comment
-
-" Reload
-map <silent> tu :call GHC_BrowseAll()<CR>
-" Type Lookup
-map <silent> tw :call GHC_ShowType(1)<CR>
-
-nmap <leader>= :TagbarToggle<CR>
-let g:tagbar_autofocus=1
-
-autocmd BufEnter *.hs set formatprg=pointfree
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python File Type settings
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" 4 space indent for python files
-" autocmd FileType python set shiftwidth=4
-" autocmd FileType python set tabstop=4
-" autocmd FileType python set softtabstop=4
-" autocmd FileType python set smarttab
-" autocmd FileType python set expandtab
-" autocmd FileType python set autoindent
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Kotlin File Type settings
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" 4 space indent
-autocmd FileType kotlin set shiftwidth=4
-autocmd FileType kotlin set tabstop=4
-autocmd FileType kotlin set softtabstop=4
-autocmd FileType kotlin set smarttab
-autocmd FileType kotlin set expandtab
-autocmd FileType kotlin set autoindent
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Javascript File Type settings
-""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType javascript set shiftwidth=4
-autocmd FileType javascript set softtabstop=4
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Rust File Type settings
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rustc_path="/usr/local/bin/rustc"
-let g:rust_recommended_style=1
-let g:rust_bang_comment_leader=1
-
-" Make sure to install rustfmt
-" $ cargo install rustfmt
-let g:rustfmt_autosave=1
-
-" Autoformat setting
-let g:formatdef_rustfmt = '"rustfmt"'
-let g:formatters_rust = ['rustfmt']
-
-" Keymaps
-
-"autocmd FileType rust unmap <D-r>
-"autocmd FileType rust unmap <D-f>
-
-autocmd FileType rust nmap <Leader>r :RustRun<CR>
-autocmd FileType rust nmap <Leader>f :RustFmt<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " HTML Settings
@@ -341,18 +275,6 @@ let NERDRemoveAltComs=0
 let NERDSpaceDelims=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" Javascript
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:javscript_plugin_jsdoc = 1
-let g:javscript_plugin_ngdoc = 1
-
-" Enable Flow - https://github.com/facebook/flow
-let g:javascript_plugin_flow = 1
-
-" Typescript
-let g:typescript_indent_disable = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""
 map <Leader>s :SyntasticToggleMode<CR>
@@ -360,33 +282,6 @@ map <Leader>s :SyntasticToggleMode<CR>
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_pylint_post_args="--max-line-length=160"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python-Mode Customization
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_python = 'python3'
-let g:pymode_breakpoint_cmd = 'import ipdb; ipdb.set_trace() # XXX BREAKPOINT'
-let g:pymode_folding=0
-let g:pymode_options_max_line_length = 160
-
-let g:pymode_lint=1
-let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_on_write=1
-let g:pymode_lint_on_fly=0
-let g:pymode_lint_ignore=""
-let g:pymode_lint_cwindow=1
-
-let g:pymode_lint_options_pylint =
-  \ {'max-line-length': g:pymode_options_max_line_length}
-
-" Disable rope since we are using YouCompleteMe
-let g:pymode_rope=0
-"let g:pymode_rope_lookup_project=0
-
-autocmd FileType python map  <Leader>pt <Esc>  :PymodeLintToggle<CR>
-autocmd FileType python map! <Leader>pt <Esc>  :PymodeLintToggle<CR>
-autocmd FileType python map  <Leader>pl <Esc>  :PymodeLint<CR>
-autocmd FileType python map! <Leader>pl <Esc>  :PymodeLint<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " You Complete Me
@@ -481,11 +376,8 @@ map  <c-l> :ConvertListFile<cr>
 map! <c-l> :ConvertListFile<cr>
 
 
-map  <Leader>dd <Esc>:call Delete_End_Spaces()<CR>
-map! <Leader>dd <Esc>:call Delete_End_Spaces()<CR>a
-
-map  <Leader>da <Esc>:call Delete_Application_Log_Crap()<CR>
-map! <Leader>da <Esc>:call Delete_Application_Log_Crap()<CR>a
+map  <Leader>dd <Esc>:call StripTrailingWhitespace()<CR>
+map! <Leader>dd <Esc>:call StripTrailingWhitespace()<CR>a
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -493,7 +385,6 @@ map! <Leader>da <Esc>:call Delete_Application_Log_Crap()<CR>a
 abbr #b /*************************************************
 abbr #e *************************************************/
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle fold state between closed and opened.
@@ -517,7 +408,7 @@ endfun
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Function to convert a list of file paths to
-" a line of comma seperate file names
+" a line of comma separate file names
 """"""""""""""""""""""""""""""""""""""""""""""""""
 function SearchFiles()
   silent execute ':%s/.*\\\(.*\)/\1/g'
@@ -535,37 +426,4 @@ function Print_Tag()
 
   put =frst . name . lst
 
-endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Function to delete the empty spaces at the end of lines
-""""""""""""""""""""""""""""""""""""""""""""""""""
-function Delete_End_Spaces()
-  silent execute ':%s/ *$//g'
-  execute ':echo "Spaces Deleted"'
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Function to delete the extra Windows Application Log Crap
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-function Delete_Application_Log_Crap()
-   silent execute ':%s/\r/\r/g'
-   silent execute ':%s/\n]/]/g'
-   silent execute ':%s/\n"/"/g'
-   silent execute ':g/^$/d'
-   silent execute ':%s/ cannot be found. //g'
-   silent execute ':%s/The local computer may not have the necessary registry information or message DLL files to display messages from a remote computer. //g'
-   silent execute ':%s/You may be able to use the \/AUXSOURCE= flag to retrieve this description; see Help and Support for details\. //g'
-   silent execute ':%s/The following information is part of the event: //g'
-   silent execute ':%s/The description for Event ID [0-9]* .*\nIf the event originated.*\nThe following information.*\n//g'
-   silent execute ':%s/\n"/"/g'
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" Function to reformat the Spinnaker Service Prints
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-function ReformatSpinnakerServicePrints()
-  silent execute ':%s/^<SpinnakerService >\_.\{-}<\/SpinnakerService>\n//g'
-  silent execute ':g/^.*SpinnakerService.*\n/d'
 endfunction
