@@ -128,3 +128,9 @@
 [submodule "home/.vim/bundle/vim-airline-themes"]
 	path = home/.vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "home/.vim/bundle/vim-delve"]
+	path = home/.vim/bundle/vim-delve
+	url = https://github.com/sebdah/vim-delve.git
+[submodule "home/.vim/bundle/vimux"]
+	path = home/.vim/bundle/vimux
+	url = https://github.com/benmills/vimux.git
