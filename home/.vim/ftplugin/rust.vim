@@ -4,6 +4,7 @@
 let g:rustc_path="/usr/local/bin/rustc"
 let g:rust_recommended_style=1
 let g:rust_bang_comment_leader=1
+let g:rust_fold = 0
 
 " Make sure to install rustfmt
 " $ cargo install rustfmt
