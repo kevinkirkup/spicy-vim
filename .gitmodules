@@ -134,3 +134,24 @@
 [submodule "home/.vim/bundle/vimux"]
 	path = home/.vim/bundle/vimux
 	url = https://github.com/benmills/vimux.git
+[submodule "home/.vim/bundle/vim-material"]
+	path = home/.vim/bundle/vim-material
+	url = https://github.com/hzchirs/vim-material.git
+[submodule "home/.vim/bundle/vim-one"]
+	path = home/.vim/bundle/vim-one
+	url = https://github.com/rakr/vim-one.git
+[submodule "home/.vim/bundle/palenight.vim"]
+	path = home/.vim/bundle/palenight.vim
+	url = https://github.com/drewtempelmeyer/palenight.vim.git
+[submodule "home/.vim/bundle/embark.vim"]
+	path = home/.vim/bundle/embark.vim
+	url = https://github.com/embark-theme/vim.git
+[submodule "home/.vim/bundle/vim-dogrun"]
+	path = home/.vim/bundle/vim-dogrun
+	url = https://github.com/wadackel/vim-dogrun.git
+[submodule "home/.vim/bundle/iceberg.vim"]
+	path = home/.vim/bundle/iceberg.vim
+	url = https://github.com/cocopon/iceberg.vim.git
+[submodule "home/.vim/bundle/falcon.vim"]
+	path = home/.vim/bundle/falcon.vim
+	url = https://github.com/fenetikm/falcon.git
