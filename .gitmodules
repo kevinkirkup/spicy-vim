@@ -143,6 +143,9 @@
 [submodule "home/.vim/bundle/vim-one"]
 	path = home/.vim/bundle/vim-one
 	url = https://github.com/rakr/vim-one.git
+[submodule "home/.vim/bundle/vim-go-impl"]
+	path = home/.vim/bundle/vim-go-impl
+	url = https://github.com/rhysd/vim-go-impl.git
 [submodule "home/.vim/bundle/palenight.vim"]
 	path = home/.vim/bundle/palenight.vim
 	url = https://github.com/drewtempelmeyer/palenight.vim.git
