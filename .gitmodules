@@ -134,6 +134,9 @@
 [submodule "home/.vim/bundle/vimux"]
 	path = home/.vim/bundle/vimux
 	url = https://github.com/benmills/vimux.git
+[submodule "home/.vim/bundle/dash.vim"]
+	path = home/.vim/bundle/dash.vim
+	url = https://github.com/rizzatti/dash.vim.git
 [submodule "home/.vim/bundle/vim-material"]
 	path = home/.vim/bundle/vim-material
 	url = https://github.com/hzchirs/vim-material.git
