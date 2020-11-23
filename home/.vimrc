@@ -1,4 +1,4 @@
-", """""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:   Kevin S Kirkup
 " LastChanged:  2020-06-08
 " Website:      None
@@ -15,17 +15,6 @@ let os=substitute(system('uname'), '\n', '', '')
 " Silence imp deprecation warnings for python 3
 " https://github.com/Valloric/YouCompleteMe/issues/3062
 silent! py3 pass
-
-" Add Powerline statusline
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:airline_theme='tomorrow'
-let g:airline_theme='powerlineish'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen
@@ -45,13 +34,36 @@ endif
 set noundofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" Airline configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('gui_running')
+  let g:airline_theme='material'
+else
+  let g:airline_theme='laederon'
+endif
+
+let g:airline_powerline_fonts = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the default color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""
-"colorscheme kevin2
-colorscheme blackboard
+" colorscheme kevin2
 syntax enable
 set guifont=PragmataPro:h12
 
+if has('gui_running')
+  let g:material_style='oceanic'
+  set background=dark
+  colorscheme vim-material
+else
+  set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+  colorscheme blackboard
+  " set background=dark
+  " colorscheme embark
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Enable spell check
