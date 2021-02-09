@@ -161,3 +161,6 @@
 [submodule "home/.vim/bundle/falcon.vim"]
 	path = home/.vim/bundle/falcon.vim
 	url = https://github.com/fenetikm/falcon.git
+[submodule "home/.vim/bundle/vim-mix-format"]
+	path = home/.vim/bundle/vim-mix-format
+	url = https://github.com/mhinz/vim-mix-format.git
