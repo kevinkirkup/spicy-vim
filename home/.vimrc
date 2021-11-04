@@ -34,6 +34,11 @@ endif
 set noundofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" FZF
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=/usr/local/opt/fzf
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
@@ -43,13 +48,16 @@ else
 endif
 
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#fzf#enabled = 1
+let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set the default color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " colorscheme kevin2
 syntax enable
-set guifont=PragmataPro:h12
+set guifont=PragmataPro\ Mono\ Liga:h12
 
 if has('gui_running')
   let g:material_style='oceanic'
