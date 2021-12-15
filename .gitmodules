@@ -101,27 +101,9 @@
 [submodule "home/.vim/bundle/vim-multiple-cursors"]
 	path = home/.vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
-[submodule "home/.vim/bundle/vim-gradle"]
-	path = home/.vim/bundle/vim-gradle
-	url = https://github.com/tfnico/vim-gradle
-[submodule "home/.vim/bundle/kotlin-vim"]
-	path = home/.vim/bundle/kotlin-vim
-	url = https://github.com/udalov/kotlin-vim
 [submodule "home/.vim/bundle/vim-terraform"]
 	path = home/.vim/bundle/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
-[submodule "home/.vim/bundle/vim-repeat"]
-	path = home/.vim/bundle/vim-repeat
-	url = https://tpope.io/vim/repeat.git
-[submodule "home/.vim/bundle/investigate.vim"]
-	path = home/.vim/bundle/investigate.vim
-	url = https://github.com/keith/investigate.vim.git
-[submodule "home/.vim/bundle/tbone.vim"]
-	path = home/.vim/bundle/tbone.vim
-	url = https://github.com/tpope/vim-tbone.git
-[submodule "home/.vim/bundle/vim-dadbod"]
-	path = home/.vim/bundle/vim-dadbod
-	url = https://github.com/tpope/vim-dadbod.git
 [submodule "home/.vim/bundle/vim-airline"]
 	path = home/.vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
@@ -170,6 +152,3 @@
 [submodule "home/.vim/bundle/fzf.vim"]
 	path = home/.vim/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
-[submodule "home/.tmux/plugins/coconut.vim"]
-	path = home/.tmux/plugins/coconut.vim
-	url = https://github.com/manicmaniac/coconut.vim.git
