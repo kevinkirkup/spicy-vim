@@ -152,3 +152,12 @@
 [submodule "home/.vim/bundle/fzf.vim"]
 	path = home/.vim/bundle/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "home/.vim/bundle/coconut.vim"]
+	path = home/.vim/bundle/coconut.vim
+	url = https://github.com/manicmaniac/coconut.vim.git
+[submodule "home/.vim/bundle/vim-endwise.git"]
+	path = home/.vim/bundle/vim-endwise.git
+	url = https://github.com/tpope/vim-endwise.git
+[submodule "home/.vim/bundle/VST.git"]
+	path = home/.vim/bundle/VST.git
+	url = https://github.com/vim-scripts/VST.git
