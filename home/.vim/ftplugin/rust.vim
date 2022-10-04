@@ -7,7 +7,7 @@ let g:rust_fold = 0
 
 " Make sure to install rustfmt
 " $ cargo install rustfmt
-let g:rustfmt_autosave=1
+let g:rustfmt_autosave=0
 
 " Keymaps
 

@@ -7,6 +7,7 @@
 set nocompatible
 "source $VIMRUNTIME/vimrc_example.vim
 "set verbose=2
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Get the OS version
 "
@@ -17,10 +18,72 @@ let os=substitute(system('uname'), '\n', '', '')
 silent! py3 pass
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug
+""""""""""""""""""""""""""""""""""""""""""""""""""
+if !has('nvim')
+  call plug#begin('~/.config/nvim/plugged')
+
+  Plug 'neovim/nvim-lspconfig' " Configuration for Nvim LSP
+  Plug 'cespare/vim-toml'
+  Plug 'dense-analysis/ale'
+
+  Plug 'scrooloose/nerdcommenter', { 'tag': '2.6.0' }
+  Plug 'scrooloose/nerdtree', { 'tag': '6.10.16' }
+  Plug 'scrooloose/syntastic'
+  Plug 'tpope/vim-surround'
+  Plug 'klen/python-mode', { 'tag': '0.13.0' }
+  Plug 'rizzatti/dash.vim'
+  Plug 'git@github'
+  Plug 'tpope/vim-fugitive', { 'tag': 'v3.7' }
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'kevinkirkup/vim-snippets'
+  Plug 'SirVer/ultisnips', { 'tag': '3.2' }
+  Plug 'ervandew/supertab'
+  Plug 'Glench/Vim-Jinja2-Syntax'
+  Plug 'Rip-Rip/clang_complete'
+  Plug 'keith/swift.vim'
+  " Plug 'vim-scripts/Vim-R-plugin'
+  Plug 'mileszs/ack.vim'
+  Plug 'wincent/command-t', { 'tag': '5.0.4' }
+  " Plug 'hspec/hspec'
+  Plug 'rust-lang/rust'
+  Plug 'Chiel92/vim-autoformat'
+  Plug 'elixir-editors/vim-elixir'
+  Plug 'vim-erlang/vim-erlang-compiler'
+  Plug 'vim-erlang/vim-erlang-omnicomplete'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'pangloss/vim-javascript', { 'commit': 'e9a59c8' }
+  Plug 'heavenshell/vim-jsdoc'
+  Plug 'fatih/vim-go', { 'tag': 'v1.26' }
+  Plug 'terryma/vim-multiple-cursors', { 'tag': 'v2.2' }
+  Plug 'hashivim/vim-terraform'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'sebdah/vim-delve'
+  Plug 'benmills/vimux', { 'commit': '37f4119' }
+  Plug 'rhysd/vim-go-impl'
+  Plug 'mhinz/vim-mix-format'
+  Plug 'tpope/vim-endwise', { 'tag': 'v1.3' }
+  Plug 'junegunn/fzf'
+  Plug 'manicmaniac/coconut.vim'
+  Plug 'vim-scripts/VST'
+  Plug 'romainl/vim-qf'
+
+  " Plug 'wadackel/vim-dogrun'
+  " Plug 'rakr/vim-one'
+  Plug 'hzchirs/vim-material'
+  " Plug 'embark-theme/vim'
+  " Plug 'drewtempelmeyer/palenight'
+  " Plug 'cocopon/iceberg'
+  " Plug 'fenetikm/falcon'
+  call plug#end()
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""""""""""""
-execute pathogen#infect()
-execute pathogen#helptags()
+" execute pathogen#infect()
+" execute pathogen#helptags()
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -62,7 +125,7 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#fzf#enabled = 1
 let g:airline#extensions#fugitiveline#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Set the default color scheme
@@ -226,7 +289,9 @@ map! <Leader>.  <Esc>  :CtrlPTag<CR>
 "   This one came from the following website:
 "   http://www.naglenet.org/vim/syntax/_gvimrc
 """"""""""""""""""""""""""""""""""""""""""""""""""
-set noguipty
+if !has('nvim')
+  set noguipty
+endif
 
 " Hide the mouse when typing, only for GUI
 " set mousehide
@@ -300,32 +365,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd vimenter * NERDTree
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Nerd Commenter Settings
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDRemoveAltComs=0
-let NERDSpaceDelims=1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic Configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>s :SyntasticToggleMode<CR>
-
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_pylint_post_args="--max-line-length=160"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" You Complete Me
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_key_list_select_completion=['<C-TAB>', '<Down>']
-let g:ycm_key_list_previous_completion=['<C-S-TAB>', '<Up>']
-
-let g:SuperTabDefaultComplettionType = '<C-Tab>'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTree_title = "[NERD Tree]"
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
@@ -348,6 +387,59 @@ function! NERDTree_WrapUp()
   let s:lastCursorColumn = virtcol('.')
   let s:lastDirectoryDisplayed = b:completePath
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Nerd Commenter Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDRemoveAltComs=0
+let NERDSpaceDelims=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic Configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>s :SyntasticToggleMode<CR>
+
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_python_pylint_post_args="--max-line-length=160"
+" let g:syntastic_mode_map = {
+"   \ "mode": "active",
+"   \ "passive_filetypes": ["rust"] }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE Configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""
+if !has('nvim')
+  " Disable unless we are using Neovim
+  let g:ale_enabled = 0
+end
+
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+
+let g:ale_set_quickfix = 1
+let g:ale_completion_enabled = 1
+
+let g:ale_floating_preview = 1
+let g:ale_close_preview_on_insert = 1
+
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-qf
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:qf_auto_open_loclist = 1
+let g:qf_auto_open_quickfix = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" You Complete Me
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_key_list_select_completion=['<C-TAB>', '<Down>']
+let g:ycm_key_list_previous_completion=['<C-S-TAB>', '<Up>']
+
+let g:SuperTabDefaultComplettionType = '<C-Tab>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tag List
@@ -445,17 +537,4 @@ endfun
 function SearchFiles()
   silent execute ':%s/.*\\\(.*\)/\1/g'
   silent execute ':%s/\n/,/g'
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" Function to print the name of file tag
-""""""""""""""""""""""""""""""""""""""""""""""""""
-function Print_Tag()
-
-  let name=expand("%:t")
-  let frst='A_(static char* debugTag = "'
-  let lst='";) // string to be used in debugging'
-
-  put =frst . name . lst
-
 endfunction
