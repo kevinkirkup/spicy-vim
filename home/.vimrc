@@ -22,53 +22,67 @@ silent! py3 pass
 """"""""""""""""""""""""""""""""""""""""""""""""""
 if !has('nvim')
   call plug#begin('~/.config/nvim/plugged')
-
   Plug 'neovim/nvim-lspconfig' " Configuration for Nvim LSP
   Plug 'cespare/vim-toml'
   Plug 'dense-analysis/ale'
 
   Plug 'scrooloose/nerdcommenter', { 'tag': '2.6.0' }
-  Plug 'scrooloose/nerdtree', { 'tag': '6.10.16' }
+  Plug 'scrooloose/nerdtree', { 'tag': '6.10.16', 'on': 'NERDTreeToggle' }
   Plug 'scrooloose/syntastic'
   Plug 'tpope/vim-surround'
-  Plug 'klen/python-mode', { 'tag': '0.13.0' }
   Plug 'rizzatti/dash.vim'
-  Plug 'git@github'
+  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'tpope/vim-fugitive', { 'tag': 'v3.7' }
-  Plug 'Valloric/YouCompleteMe'
+  Plug 'Valloric/YouCompleteMe', { 'do', 'python3 install.py --go-completer --rust-completer --clangd-completer' }
   Plug 'kevinkirkup/vim-snippets'
   Plug 'SirVer/ultisnips', { 'tag': '3.2' }
   Plug 'ervandew/supertab'
-  Plug 'Glench/Vim-Jinja2-Syntax'
   Plug 'Rip-Rip/clang_complete'
-  Plug 'keith/swift.vim'
-  " Plug 'vim-scripts/Vim-R-plugin'
   Plug 'mileszs/ack.vim'
   Plug 'wincent/command-t', { 'tag': '5.0.4' }
-  " Plug 'hspec/hspec'
-  Plug 'rust-lang/rust'
   Plug 'Chiel92/vim-autoformat'
-  Plug 'elixir-editors/vim-elixir'
-  Plug 'vim-erlang/vim-erlang-compiler'
-  Plug 'vim-erlang/vim-erlang-omnicomplete'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'pangloss/vim-javascript', { 'commit': 'e9a59c8' }
-  Plug 'heavenshell/vim-jsdoc'
-  Plug 'fatih/vim-go', { 'tag': 'v1.26' }
   Plug 'terryma/vim-multiple-cursors', { 'tag': 'v2.2' }
-  Plug 'hashivim/vim-terraform'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'sebdah/vim-delve'
   Plug 'benmills/vimux', { 'commit': '37f4119' }
-  Plug 'rhysd/vim-go-impl'
-  Plug 'mhinz/vim-mix-format'
   Plug 'tpope/vim-endwise', { 'tag': 'v1.3' }
   Plug 'junegunn/fzf'
-  Plug 'manicmaniac/coconut.vim'
   Plug 'vim-scripts/VST'
   Plug 'romainl/vim-qf'
 
+  " ==================================================
+  " Language Plugins
+  " ==================================================
+
+  Plug 'keith/swift.vim', { 'for': 'swift' }
+  Plug 'rust-lang/rust', { 'for': 'rust' }
+  Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+  Plug 'manicmaniac/coconut.vim', { 'for': 'coconut' }
+
+  Plug 'fatih/vim-go', { 'tag': 'v1.26', 'for': 'go' }
+  Plug 'rhysd/vim-go-impl', { 'for': 'go' }
+
+  Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+  Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+
+  Plug 'vim-erlang/vim-erlang-compiler', { 'for': 'erlang' }
+  Plug 'vim-erlang/vim-erlang-omnicomplete', { 'for': 'erlang' }
+
+  Plug 'vim-scripts/Vim-R-plugin', { 'for': 'r' }
+  Plug 'hspec/hspec', { 'for': 'haskell' }
+
+  Plug 'klen/python-mode', { 'tag': '0.13.0', 'for': 'python' }
+  Plug 'sebdah/vim-delve', { 'for': 'python' }
+
+  Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+  Plug 'pangloss/vim-javascript', { 'commit': 'e9a59c8', 'for': 'javascript' }
+  Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+
+  Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'jinja' }
+
+  " ==================================================
+  " Themes
+  " ==================================================
   " Plug 'wadackel/vim-dogrun'
   " Plug 'rakr/vim-one'
   Plug 'hzchirs/vim-material'
@@ -76,6 +90,9 @@ if !has('nvim')
   " Plug 'drewtempelmeyer/palenight'
   " Plug 'cocopon/iceberg'
   " Plug 'fenetikm/falcon'
+  Plug 'jarodl/cobalt.vim'
+  Plug 'travisjeffery/vim-colors'
+  Plug 'arcticicestudio/nord-vim'
   call plug#end()
 endif
 
@@ -134,19 +151,20 @@ let g:airline#extensions#ale#enabled = 1
 syntax enable
 set guifont=PragmataPro\ Mono\ Liga:h12
 
-if has('gui_running')
-  let g:material_style='oceanic'
-  set background=dark
-  colorscheme vim-material
-else
-  set termguicolors
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-  colorscheme blackboard
-  " set background=dark
-  " colorscheme embark
-endif
+" if has('gui_running')
+"   let g:material_style='oceanic'
+"   set background=dark
+"   colorscheme vim-material
+" else
+"   set termguicolors
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"
+"   set background=light
+"   colorscheme tir_black
+"   " set background=dark
+"   " colorscheme embark
+" endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Enable spell check
@@ -426,6 +444,13 @@ let g:ale_floating_preview = 1
 let g:ale_close_preview_on_insert = 1
 
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+
+let g:ale_fixers = {
+    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+    \ 'rust': ['rustfmt'] }
+
+inoremap <silent><expr><TAB>
+    \ pumvisible() ? “\<C-n>” : “\<TAB>”
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " vim-qf
