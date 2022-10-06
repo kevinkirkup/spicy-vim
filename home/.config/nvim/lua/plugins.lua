@@ -270,7 +270,7 @@ packer.startup {
     use { "j-hui/fidget.nvim", after = "nvim-lspconfig", config = [[require('config.fidget-nvim')]] }
 
     use { "keith/swift.vim", ft = "swift" }
-    use { "simrat39/rust-tools.nvim", ft = "rust" }
+    use { "simrat39/rust-tools.nvim", ft = "rust", config = [[require('config.rust-tools')]] }
     use { "hashivim/vim-terraform", ft = "terraform" }
     use { "manicmaniac/coconut.vim", ft = "coconut" }
 

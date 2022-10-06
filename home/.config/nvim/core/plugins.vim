@@ -286,11 +286,8 @@ let g:NERDTree_title = "[NERD Tree]"
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
 
-" map <c-w><c-t> :NERDTreeToggle<CR>
-" map! <c-w><c-t> :NERDTreeToggle<CR>
-
-map <c-w><c-t> :NvimTreeToggle<CR>
-map! <c-w><c-t> :NvimTreeToggle<CR>
+map <c-w><c-t> :NERDTreeToggle<CR>
+map! <c-w><c-t> :NERDTreeToggle<CR>
 
 " Handler for NERDTree
 function! NERDTree_Start()
