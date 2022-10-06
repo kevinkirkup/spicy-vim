@@ -1,0 +1,150 @@
+snippet cl "class .. (class)"
+class ${1:`!p snip.rv = snip.basename or "name"`} {
+public:
+	${1/(\w+).*/$1/} (${2:arguments});
+	virtual
+		~${1/(\w+).*/$1/} ();
+
+	//////////////////////////////////////////////////
+	// Private Methods
+	//////////////////////////////////////////////////
+
+	//////////////////////////////////////////////////
+	// Private Fields
+	//////////////////////////////////////////////////
+
+	${0:/* data */}
+};
+endsnippet
+
+snippet readfile "read file (readF)"
+std::vector<char> v;
+if (FILE *fp = fopen(${1:"filename"}, "r")) {
+
+	char buf[1024];
+	while(size_t len = fread(buf, 1, sizeof(buf), fp))
+		v.insert(v.end(), buf, buf + len);
+	fclose(fp);
+}
+endsnippet
+
+##################################################
+# C++11
+##################################################
+snippet enumc "Class Enumeration"
+enum class ${1:name} { $0 };
+endsnippet
+
+##################################################
+# Pragmas
+##################################################
+snippet once "Pragma once"
+#pragma once
+endsnippet
+
+##################################################
+# Section Documentation
+##################################################
+snippet fcl "Class Section" b
+//////////////////////////////////////////////////////////////////////
+/// @name Classes
+//@{
+
+$1
+
+//@} End of Classes
+endsnippet
+
+##################################################
+# Google Test snippets
+##################################################
+snippet gfh "Gmock Unit Test Header"
+/*#################################################################
+#   ____ _                 ____            _                      #
+#  / ___(_)___  ___ ___   / ___| _   _ ___| |_ ___ _ __ ___  ___  #
+# | |   | / __|/ __/ _ \  \___ \| | | / __| __/ _ \ '_ \` _ \/ __| #
+# | |___| \__ \ (_| (_) |  ___) | |_| \__ \ ||  __/ | | | | \__ \ #
+#  \____|_|___/\___\___/  |____/ \__, |___/\__\___|_| |_| |_|___/ #
+#                                |___/                            #
+#                                                                 #
+###################################################################
+# Copyright 2014 Cisco Systems (USA)                              #
+# All rights, including trade secret rights, reserved.            #
+#################################################################*/
+
+//////////////////////////////////////////////////////////////////////
+/// @name Includes
+//@{
+
+#include <gmock/gmock.h>
+
+//@} End of Includes
+endsnippet
+
+snippet gt
+TEST_F(${1:`!p snip.rv = snip.basename`}, ${2:my_kickass_unit_test_will_succeed}) { }
+$3
+endsnippet
+
+snippet gcl
+class ${1:`!p snip.rc = snip.basename`} : public ::testing::Test {
+ public:
+
+	$1() {}
+
+	virtual
+		~$1() {}
+
+	/**
+	 * Test Case Setup
+	 */
+	virtual void
+		SetUp();
+
+	/**
+	 * Test Case tear down
+	 */
+	virtual void
+		TearDown();
+
+	//////////////////////////////////////////////////
+	// Fields
+	//////////////////////////////////////////////////
+	$3
+};
+
+void $1::SetUp() { }
+void $1::TearDown() { }
+endsnippet
+
+snippet gat
+	ASSERT_TRUE(${1:TRUE});
+	$2
+endsnippet
+
+snippet gaf
+	ASSERT_FALSE(${1:FALSE});
+	$2
+endsnippet
+
+snippet gae
+	ASSERT_EQ(${1:Expected}, ${2:Result});
+	$3
+endsnippet
+
+snippet gee
+	EXPECT_EQ(${1:Expected}, ${2:Result});
+	$3
+endsnippet
+
+snippet gf
+	FAIL();
+	$1
+endsnippet
+
+snippet gmec
+	EXPECT_CALL(${1:instance}, ${2:Method(${3:matchers})})
+		.WillRepeatedly(${4:Return(0)});
+endsnippet
+
+# vim:ft=snippets:

@@ -1,0 +1,505 @@
+###########################################################################
+#                            Decorators                                   #
+###########################################################################
+priority -50
+
+snippet "@(S|s)ing?l?e?t?o?n?" "@Singleton" r
+@Singleton
+endsnippet
+
+snippet "@(C|c)ol?u?m?n?N?a?m?e?" "@ColumnName" r
+@ColumnName("${1}")${0}
+endsnippet
+
+snippet "@(G|g)etG?e?n?e?r?a?t?e?d?K?e?y?s?" "@GetGeneratedKeys" r
+@GetGeneratedKeys
+endsnippet
+
+snippet "@(T|t)ran?a?s?c?a?t?i?o?n?" "@Transaction" r
+@Transaction
+endsnippet
+
+snippet "@(U|u)seR?o?w?R?e?d?u?c?e?r?" "@UseRowReducer"
+@UseRowReducer(${1: ${2}RowReducer::class})
+endsnippet
+
+snippet "@(S|s)qlU?p?d?a?t?e?" "@SqlUpdate" rm
+@SqlUpdate("""
+	${1}
+""")${0}
+endsnippet
+
+snippet "@(S|s)qlQ?u?e?r?y?" "@SqlQuery" rm
+@SqlUpdate("""
+	$SQL_FIND
+	${1}
+""")${0}
+endsnippet
+
+###########################################################################
+#                            File Templates                               #
+###########################################################################
+
+#-------------------------------------------------------------------------#
+#                            DAO Related                                  #
+#-------------------------------------------------------------------------#
+snippet dao "DAO Template" m
+import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys
+import org.jdbi.v3.sqlobject.statement.SqlQuery
+import org.jdbi.v3.sqlobject.statement.SqlUpdate
+import org.jdbi.v3.sqlobject.statement.UseRowReducer
+import org.jdbi.v3.sqlobject.transaction.Transaction
+
+interface `!v vim_snippets#Filename('$1', 'name')` {
+
+	@SqlUpdate("""
+		insert into ${2:table} (
+			${0}
+		) values (
+		)
+	""")
+	@GetGeneratedKeys
+	fun insert(obj: ${1:ModelType}): Int
+
+	@SqlUpdate("""
+		update $2
+		set xxx = :obj.xxx
+		where id = :obj.id
+	""")
+	fun update(obj: $1): Int
+
+	@SqlUpdate("""
+		delete from $2
+		where id = :${1/\w+/\l$0Id/g}
+	""")
+	fun delete(${1/\w+/\l$0Id/g}: Int)
+
+	@SqlQuery("""
+		select * from $2
+		where id = :id
+	""")
+	@UseRowReducer($1RowReducer::class)
+	fun findById(id: Int): $1?
+
+	@SqlQuery("""
+		select * from $2
+	""")
+	@UseRowReducer($1RowReducer::class)
+	fun findAll(): List<$1>
+
+	@SqlQuery("""
+		select * from $2
+	""")
+	@UseRowReducer($1RowReducer::class)
+	fun findAllBy${3:Key}Id(${3/\w+/\l$0/g}Id: Int): List<$1>
+
+}
+endsnippet
+
+snippet rr "RowReducer Template" b
+import com.pureport.jdbi.Builder
+import com.pureport.jdbi.LinkedHashMapBuilderRowReducer
+import javax.inject.Singleton
+import org.jdbi.v3.core.mapper.reflect.ColumnName
+import org.jdbi.v3.core.result.RowView
+
+@Singleton
+class ${1:`!v vim_snippets#Filename('$1', 'name')`}
+	: LinkedHashMapBuilderRowReducer<Int, $1.${2:${1/(\w+)RowReducer/$1/}}Builder, $2> {
+
+	class $2Builder(
+
+		@ColumnName("id")
+		var id: Int?,
+
+		${0}
+
+	) : Builder<$2> {
+		override fun build(): $2 {
+			return $2()
+		}
+	}
+
+	override fun accumulate(container: MutableMap<Int, $2Builder>?, rowView: RowView?) {
+		val ${2/\w+/\l$0/g}Builder = container?.computeIfAbsent(rowView?.getColumn("id", Integer::class.java)!!.toInt()) {
+			rowView.getRow($2Builder::class.java)
+		}
+	}
+}
+endsnippet
+
+snippet rrc "RowReducer Column" m
+rowView?.getColumn("${1:column_name}", ${1:Class}::class.java)?.let {
+	${0}
+}
+endsnippet
+
+snippet rrb "RowReducer Builder" m
+class ${1:ModelType}Builder : Builder<$1> {
+
+	@ColumnName("${2}")
+	var id: Int? = null
+
+	${0}
+
+	override fun build(): $1 {
+		return $1()
+	}
+}
+endsnippet
+
+snippet rrcol "RowReducer Builder Column" m
+@ColumnName("${1}")
+var ${2:name}: ${3:Type}${4: = ${5}}
+
+${0}
+endsnippet
+
+#-------------------------------------------------------------------------#
+#                           Resources and DTO                             #
+#-------------------------------------------------------------------------#
+
+snippet res "Resource File Template" b
+import com.google.inject.assistedinject.Assisted
+import com.pureport.kato.api.$1DTO
+import com.pureport.kato.auth.annotation.RequiresContextPermission
+import com.pureport.kato.model.$1
+import com.pureport.kato.model.permission.Action
+import com.pureport.kato.model.permission.PermissionContext
+import com.pureport.kato.resources.permissions.HasPermissionContext
+import com.pureport.kato.services.$1Service
+import com.pureport.kato.transformers.$1Transformer
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
+import io.swagger.annotations.Authorization
+import io.swagger.annotations.AuthorizationScope
+import javax.inject.Inject
+import javax.servlet.http.HttpServletRequest
+import javax.validation.Valid
+import javax.ws.rs.Consumes
+import javax.ws.rs.DELETE
+import javax.ws.rs.GET
+import javax.ws.rs.PUT
+import javax.ws.rs.Produces
+import javax.ws.rs.core.Context
+import javax.ws.rs.core.MediaType
+
+@Api
+@Produces(MediaType.APPLICATION_JSON)
+open class ${1:`!p snip.rv = snip.basename.replace("Resource","")`}Resource @Inject constructor(
+	private val ${1/(\w+)/\l$1/g}Service: $1Service,
+	private val ${1/(\w+)/\l$1/g}Transformer: $1Transformer,
+	@Assisted val ${1/(\w+)/\l$1/g}: $1
+) : HasPermissionContext {
+
+	@ApiOperation("Get ${2:$1} details")
+	@GET
+	@RequiresContextPermission(Action.READ)
+	fun get(@Context request: HttpServletRequest): $1DTO {
+		return ${1/(\w+)/\l$1/g}Transformer.fromModel(request.locale, ${1/(\w+)/\l$1/g})
+	}
+
+	@ApiOperation("Update $2", authorizations = [Authorization("ADMIN")])
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@RequiresContextPermission(Action.UPDATE)
+	fun update(
+		@Context request: HttpServletRequest,
+		@Valid ${1/(\w+)/\l$1/g}DTO: $1DTO
+	): $1DTO? {
+		return ${1/(\w+)/\l$1/g}Service.update(
+			${1/(\w+)/\l$1/g}Transformer.toModel(${1/(\w+)/\l$1/g}DTO, ${1/(\w+)/\l$1/g})
+		)?.let { ${1/(\w+)/\l$1/g}Transformer.fromModel(request.locale, it) }
+	}
+
+	@ApiOperation("Delete $2", authorizations = [Authorization("ADMIN")])
+	@DELETE
+	@RequiresContextPermission(Action.DELETE)
+	open fun delete() {
+		${1/(\w+)/\l$1/g}Service.delete(${1/(\w+)/\l$1/g})
+	}
+
+	override fun context(): PermissionContext {
+		return ${1/(\w+)/\l$1/g}
+	}
+}
+endsnippet
+
+snippet ress "Resources File Template" b
+import com.pureport.kato.api.$1DTO
+import com.pureport.kato.services.$1Service
+import com.pureport.kato.transformers.$1Transformer
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
+import io.swagger.annotations.Authorization
+import javax.inject.Inject
+import javax.servlet.http.HttpServletRequest
+import javax.validation.Valid
+import javax.ws.rs.Consumes
+import javax.ws.rs.GET
+import javax.ws.rs.NotFoundException
+import javax.ws.rs.POST
+import javax.ws.rs.Path
+import javax.ws.rs.PathParam
+import javax.ws.rs.Produces
+import javax.ws.rs.core.Context
+import javax.ws.rs.core.MediaType
+import javax.ws.rs.core.Response
+import javax.ws.rs.core.UriInfo
+import org.apache.shiro.authz.annotation.RequiresPermissions
+
+@Api("${2/\w+/\u$0/g}")
+@Produces(MediaType.APPLICATION_JSON)
+class ${1:`!p snip.rv = snip.basename.replace("sResource","")`}sResource @Inject constructor(
+	private val ${1/(\w+)/\l$1/g}Service: $1Service,
+	private val ${1/(\w+)/\l$1/g}ResourceFactory: ResourceFactory,
+	private val ${1/(\w+)/\l$1/g}Transformer: $1Transformer
+) {
+
+	@ApiOperation("Add ${2:$1}", authorizations = [Authorization("ADMIN")])
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@RequiresPermissions("${1/(\w+)/\l$1/g}:create")
+	fun create$1(
+		@Context request: HttpServletRequest,
+		@Context uriInfo: UriInfo,
+		@Valid ${1/(\w+)/\l$1/g}DTO: $1DTO
+	): Response {
+		val ${1/(\w+)/\l$1/g} = ${1/(\w+)/\l$1/g}Transformer.toModel(${1/(\w+)/\l$1/g}DTO)
+		val new$1 = ${1/(\w+)/\l$1/g}Service.create(${1/(\w+)/\l$1/g})
+		val new$1DTO = ${1/(\w+)/\l$1/g}Transformer.fromModel(request.locale, new$1)
+
+		return Response
+			.created(uriInfo.baseUriBuilder.path(new$1DTO.toLink().href).build())
+			.entity(new$1DTO)
+			.build()
+	}
+
+	@ApiOperation("List $2")
+	@GET
+	fun get$1s(@Context request: HttpServletRequest): List<$1DTO> {
+		return ${1/(\w+)/\l$1/g}Service.findAll()
+			.map { ${1/(\w+)/\l$1/g}Transformer.fromModel(request.locale, it) }
+	}
+
+	@Path("{${1/(\w+)/\l$1/g}Id}")
+	fun get$1(@PathParam("${1/(\w+)/\l$1/g}Id") externalId: String): $1Resource {
+		val ${1/(\w+)/\l$1/g} = ${1/(\w+)/\l$1/g}Service.findByExternalId(externalId)
+			?: throw NotFoundException("${2/\w+/\u$0/g} %s not found".format(externalId))
+
+		return ${1/(\w+)/\l$1/g}ResourceFactory.create$1Resource(${1/(\w+)/\l$1/g})
+	}
+}
+endsnippet
+
+snippet "trans?f?o?r?m?e?r?" "Transformer File Template" b
+import com.pureport.kato.api.$1DTO
+import com.pureport.kato.model.$1
+import com.pureport.kato.services.$1Service
+import com.pureport.kato.services.UUIDService
+import java.util.Locale
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class ${1:`!p snip.rv = snip.basename.replace("Transformer","")`}Transformer @Inject constructor(
+	private val locationTransformer: LocationTransformer,
+	private val uuidService: UUIDService
+) : Transformer<$1DTO, $1> {
+	override fun fromModel(locale: Locale, obj: $1): $1DTO {
+		return $1DTO(
+			id = obj.externalId,
+			${0}
+		)
+	}
+
+	override fun toModel(obj: $1DTO): $1 {
+		return $1(
+			externalId = obj.id ?: uuidService.generate($1Service.UUID_PREFIX),
+			// TODO
+		)
+	}
+
+	override fun toModel(obj: $1DTO, existingObj: $1): $1 {
+		return existingObj.copy(
+			// TODO
+		)
+	}
+}
+endsnippet
+
+snippet dto "REST API DTO Data Template" b
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonPropertyOrder
+import io.swagger.annotations.ApiModel
+import io.swagger.annotations.ApiModelProperty
+import javax.validation.Valid
+import javax.validation.constraints.NotNull
+import javax.validation.constraints.Size
+
+@JsonPropertyOrder("href")
+@ApiModel("$1")
+data class ${1:`!p snip.rv = snip.basename.replace("DTO","")`}DTO(
+
+	@field:Size(min = 1, max = 64)
+	@JsonProperty
+	val id: String? = null,
+
+	@JsonProperty
+	val href: String = "/${1/\w+/\l$0/g}/$id",
+
+	$0
+
+) : Linkable {
+	override fun toLink(): Link {
+		return Link(id!!, href)
+	}
+}
+endsnippet
+
+snippet dto "REST API DTO Interface Template" b
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.pureport.kato.errors.ErrorCode
+import io.swagger.annotations.ApiModel
+
+@ApiModel(
+	value = "$1",
+	discriminator = "type",
+	subTypes = [
+		${2:SomeDTO::class}
+	]
+)
+interface ${1:`!p snip.rv = snip.basename.replace("DTO","")`}DTO {
+
+	${0}
+}
+endsnippet
+
+#-------------------------------------------------------------------------#
+#                             DTO Properties                              #
+#-------------------------------------------------------------------------#
+
+snippet jprop "Json Property" m
+val ${1:name}: ${2:type}${3: = ${4:default}}
+endsnippet
+
+snippet jprop "Json Property - RO" m
+@get:ApiModelProperty(accessMode = ApiModelProperty.AccessMode.READ_ONLY)
+@get:JsonProperty(access = JsonProperty.Access.READ_ONLY)
+val ${1:name}: ${2:type}${3: = ${4:default}}
+endsnippet
+
+snippet jprop "Json Property - RW" m
+@get:ApiModelProperty(accessMode = ApiModelProperty.AccessMode.READ_WRITE)
+@get:JsonProperty
+val ${1:name}: ${2:type}${3: = ${4:default}}
+endsnippet
+
+#-------------------------------------------------------------------------#
+#                             Functional Tests                            #
+#-------------------------------------------------------------------------#
+
+snippet ftobj "REST API Object for functional tests"
+import com.pureport.kato.AuthToken
+import com.pureport.kato.CloseableResource
+import com.pureport.kato.HrefParser
+import com.pureport.kato.model.Link
+import com.pureport.kato.resources.CRUD
+import com.pureport.kato.resources.KatoUris
+import io.restassured.response.ValidatableResponse
+import java.net.URI
+import javax.ws.rs.core.HttpHeaders
+
+object ${1:`!p snip.rv = snip.basename[:-1]`}s {
+	/**
+	 * Creates a $1 and returns the UUID of the ${1/\w+/\l$0/g}.
+	 * Verifies the status code is 201.
+	 *
+	 * @param authToken Bearer access token string
+	 * @param ${1/\w+/\l$0/g} $1 to create
+	 * @return UUID of the created ${1/\w+/\l$0/g}
+	 */
+	fun create(
+		authToken: AuthToken,
+		${1/\w+/\l$0/g}: $1
+	): CloseableResource {
+		val ${1/\w+/\l$0/g}Href = CRUD.create(
+			authToken,
+			KatoUris.${1/\w+/\l$0/g}sUri(),
+			${1/\w+/\l$0/g}
+		).extract().header(HttpHeaders.LOCATION)
+
+		return CloseableResource(
+			authToken = authToken,
+			link = Link(
+				href = ${1/\w+/\l$0/g}Href,
+				id = HrefParser.parse(URI.create(${1/\w+/\l$0/g}Href), $1::class)
+			)
+		)
+	}
+
+	/**
+	 * Finds the $1 with the specified UUID and returns the response for further validation
+	 *
+	 * @param authToken Bearer access token string
+	 * @return ValidatableResponse for further validation
+	 */
+	fun findById(
+		authToken: AuthToken,
+		${1/\w+/\l$0/g}Id: String
+	): ValidatableResponse {
+		return CRUD.read(
+			authToken,
+			KatoUris.${1/\w+/\l$0/g}Uri(${1/\w+/\l$0/g}Id)
+		)
+	}
+
+	/**
+	 * Finds the $1 with the specified UUID and returns the response for further validation
+	 *
+	 * @param authToken Bearer access token string
+	 * @return ValidatableResponse for further validation
+	 */
+	fun findAll(
+		authToken: AuthToken
+	): ValidatableResponse {
+		return CRUD.read(
+			authToken,
+			KatoUris.${1/\w+/\l$0/g}sUri()
+		)
+	}
+
+	/**
+	 * Updates the ${1/\w+/\l$0/g} with the specified UUID, and returns the response for further validation
+	 *
+	 * @param authToken Bearer access token string
+	 * @param ${1/\w+/\l$0/g}Id UUID of the ${1/\w+/\l$0/g}
+	 * @return ValidatableResponse for further validation
+	 */
+	fun update(
+		authToken: AuthToken,
+		${1/\w+/\l$0/g}Id: String,
+		${1/\w+/\l$0/g}: $1
+	): ValidatableResponse {
+		return CRUD.update(
+			authToken,
+			KatoUris.${1/\w+/\l$0/g}Uri(${1/\w+/\l$0/g}Id),
+			${1/\w+/\l$0/g}
+		)
+	}
+
+	/**
+	 * Deletes the $1 with the specified UUID, and returns the response for further validation
+	 *
+	 * @param authToken Bearer access token string
+	 * @param ${1/\w+/\l$0/g}Id UUID of the supported connection
+	 * @return ValidatableResponse for further validation
+	 */
+	fun delete(authToken: AuthToken, ${1/\w+/\l$0/g}Id: String): ValidatableResponse {
+		return CRUD.delete(
+			authToken,
+			KatoUris.${1/\w+/\l$0/g}Uri(${1/\w+/\l$0/g}Id)
+		)
+	}
+}
+endsnippet

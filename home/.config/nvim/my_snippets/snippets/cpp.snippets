@@ -1,0 +1,55 @@
+# class
+snippet cl
+	class ${1:`vim_snippets#Filename('$1', 'name')`} {
+	public:
+		$1(${2});
+		virtual ~$1();
+
+		//////////////////////////////////////////////////
+		// Private Methods
+		//////////////////////////////////////////////////
+
+		//////////////////////////////////////////////////
+		// Private Fields
+		//////////////////////////////////////////////////
+
+		${0:/* data */}
+	};
+# Method
+snippet m
+	//--------------------------------------------------
+	${1:HRESULT}
+	${2:C`Filename('$1', 'name')`}::${3:myMethod}(
+		${4:params}) {
+
+		$1 ${5:hr} = ${6:S_OK};
+
+		return $5;
+	}
+# Method Prototype
+snippet mp
+	/**
+	 * ${4:Description}
+	 * $3
+	 * @returns $1
+	 */
+	${1:HRESULT}
+		${2:myMethod}(
+				${3:params});
+#Code block
+snippet cb
+	if (${1}SUCCEEDED(${2:hr})) {
+
+		${3}
+
+		if ($1FAILED($2)){
+		}
+	}
+snippet hr
+	HRESULT hr = S_OK;
+snippet hrs
+	if (SUCCEEDED(${1:hr}))
+		${2:/* code */}
+snippet hrf
+	if (FAILED(${1:hr}))
+		${2:/* code */}

@@ -1,0 +1,20 @@
+# vim:ft=snippets:
+# Snippets for Go gRPC
+
+priority -50
+
+snippet grpcclient "gRPC Client"
+func New${1:client}Client() (${2:package}.$1ServiceClient, func(), error) {
+	panic(wire.Build(
+		grpcClientSet,
+		$2.New$1ServiceClient,
+	))
+}
+endsnippet
+
+snippet extreq "Extract gRPC Values" b
+func (m ${1:type}) ExtractRequestFields(appendToMap map[string]interface{}) {
+	appendToMap["${2:request.value}"] = m.${3:Value}
+	$0
+}
+endsnippet

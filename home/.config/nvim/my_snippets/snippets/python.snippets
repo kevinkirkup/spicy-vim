@@ -1,0 +1,28 @@
+# New Test Case
+snippet tc
+	class ${1:ClassName}(${2:unittest.TestCase}):
+		'''${3:docstring for $1}'''
+
+		def setUp(self):
+			${4}
+
+		def tearDown(self):
+			${5}
+snippet cla
+	class ${1:class_name}:
+		"""${0:description}"""
+
+# REPR
+snippet repr "methods implementing string representation"
+	def __repr__(self):
+		attributes = [
+			${1:self}
+		]
+		parameters = ", ".join([ repr(attribute) for attribute in attributes ])
+		return "%s(%s)" % (self.__class__.__name__, parameters)
+
+	def __str__(self):
+		${2:pass}
+
+	def __unicode__(self):
+		${3:pass}

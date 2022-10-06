@@ -1,0 +1,54 @@
+# vim:ft=snippets:
+# Snippets for Go
+
+priority -50
+
+# Terraform Resource
+snippet tf "Terraform Resource" b
+func resource${1:Name}() *schema.Resource {
+	return &schema.Resource{
+		Create: resource$1Create,
+		Read:   resource$1Read,
+		Update: resource$1Update,
+		Delete: resource$1Delete,
+
+		Schema: map[string]*schema.Schema{
+			"id": &schema.Schema{
+				Type:     schema.TypeString,
+				Required: true,
+			},
+		},
+	}
+}
+
+func resource$1Create(d *schema.ResourceData, m interface{}) error {
+	return resource$1Read(d, m)
+}
+
+func resource$1Read(d *schema.ResourceData, m interface{}) error {
+	return nil
+}
+
+func resource$1Update(d *schema.ResourceData, m interface{}) error {
+	return resource$1Read(d, m)
+}
+
+func resource$1Delete(d *schema.ResourceData, m interface{}) error {
+	return nil
+}
+endsnippet
+
+# Terraform Resource
+snippet tf "Terraform Data Source" b
+func dataSource${1:Name}() *schema.Resource {
+	return &schema.Resource{
+		Read:   dataSource$1Read,
+
+		Schema: map[string]*schema.Schema{},
+	}
+}
+
+func dataSource$1Read(d *schema.ResourceData, m interface{}) error {
+	return nil
+}
+endsnippet

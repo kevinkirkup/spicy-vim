@@ -1,0 +1,80 @@
+# Snippets for Kotlin implementations for Kafka Streams
+
+priority -50
+
+global !p
+import stringcase
+def spinalcase_filename():
+	return stringcase.spinalcase(snip.basename)
+
+def spinalcase(name):
+	return stringcase.spinalcase(name)
+endglobal
+
+snippet "st?r?i?n?g?st?r?e?a?m?argu?m?e?n?t?s?" "Stream Argument" rb
+override val ${1:arugument} by option(
+		"-i", "--${2:`!p snip.rv = spinalcase(snip.p.current_text)`}",
+		help = "${3:Description}"
+	)
+	.default("${4:Default}")
+endsnippet
+
+snippet "lo?n?g?st?r?e?a?m?argu?m?e?n?t?s?" "Stream Argument" rb
+override val ${1:arugument} by option(
+		"-i", "--${2:`!p snip.rv = spinalcase(snip.p.current_text)`}",
+		help = "${3:Description}"
+	)
+	.long()
+	.default("${4:Default}L")
+endsnippet
+
+snippet stream "Kafka Stream" b
+import com.github.ajalt.clikt.parameters.options.default
+import com.github.ajalt.clikt.parameters.options.option
+import com.github.ajalt.clikt.parameters.types.long
+import com.pureport.kafka.streams.KafkaStream
+import com.pureport.kafka.streams.serialization.JsonSerde
+import org.apache.kafka.common.serialization.Serdes
+import org.apache.kafka.streams.KeyValue
+import org.apache.kafka.streams.StreamsBuilder
+import org.apache.kafka.streams.kstream.Consumed
+import org.apache.kafka.streams.kstream.Produced
+
+class ${1:`!v vim_snippets#Filename('$1', 'name')`} : KafkaStream<ReorderAndWindow.Configuration> {
+
+	override fun run(
+		configuration: Configuration,
+		streamsBuilder: StreamsBuilder
+	) {
+		streamsBuilder
+			.stream(
+				configuration.inputTopic,
+				Consumed.with(Serdes.ByteArray(), JsonSerde(JsonNode::class.java))
+			)
+
+			// Convert to Stream
+			.toStream()
+
+			// Write the data to the output topic
+			.to(configuration.outputTopic,
+				Produced.with(Serdes.ByteArray(), JsonSerde(JsonNode::class.java))
+			)
+	}
+
+	interface Configuration : KafkaStream.Configuration {
+		${2:arguments}
+	}
+
+	class Command : Configuration, KafkaStream.Command<Configuration>(
+		"${3:`!p snip.rv = spinalcase_filename()`}",
+		"""
+			${4:Description}
+		""".trimIndent()
+	) {
+		${0}
+
+		override val configuration: Configuration get() = this
+		override val kafkaStream: KafkaStream<Configuration> get() = $1()
+	}
+}
+endsnippet

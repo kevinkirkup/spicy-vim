@@ -1,0 +1,163 @@
+###########################################################################
+#                            Unit Tests                                   #
+###########################################################################
+
+priority -50
+
+#-------------------------------------------------------------------------#
+#                               Spek2                                     #
+#-------------------------------------------------------------------------#
+snippet tc "Test Case" m
+object ${1:`!v vim_snippets#Filename('$1', 'name')`} : Spek({
+
+	${0}
+})
+endsnippet
+
+snippet "desc?r?i?b?e?" "Describe ..." rm
+describe("${1:A ${2}}") {
+
+	${0}
+}
+endsnippet
+
+snippet it "It ..." m
+it("${1:should ${2}}") {
+
+	${0}
+}
+endsnippet
+
+snippet bf "Before Group ..." m
+before {
+
+	${0}
+}
+endsnippet
+
+snippet af "After Group ..." m
+after {
+
+	${0}
+}
+endsnippet
+
+snippet be "Before Each Test ..." m
+beforeEach {
+
+	${0}
+}
+endsnippet
+
+snippet ae "After Each Test ..." m
+afterEach {
+
+	${0}
+}
+endsnippet
+
+#-------------------------------------------------------------------------#
+#                              Expect                                     #
+#-------------------------------------------------------------------------#
+
+# Generic Matchers
+
+snippet "expe?c?t?" "expect ... toBeTheSameAs" r
+	expect(${1}).toBeTheSameAs(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toNotBeTheSameAs" r
+	expect(${1}).toNotBeTheSameAs(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toBe" r
+	expect(${1}).toBe(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toBeNull" r
+	expect(${1}).toBeNull(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toNotBeNull" r
+	expect(${1}).toNotBeNull(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toBeInstanceOf" r
+	expect(${1}).toBeInstanceOf<${2}>()${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toContain" r
+	expect(${1}).toContain(${2})${0}
+endsnippet
+
+# Boolean Matchers
+
+snippet "expe?c?t?" "expect ... toHold" r
+	expect(${1}).toHold(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... notToHold" r
+	expect(${1}).notToHold(${2})${0}
+endsnippet
+
+# Error Matchers
+
+snippet .on ".on"      A
+	.on(${1})${0}
+endsnippet
+
+snippet .when ".when_" A
+	.on(${1})${0}
+endsnippet
+
+# List Matchers
+
+snippet "expe?c?t?" "expect ... toBeEmpty" r
+	expect(${1}).toBeEmpty(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toHaveSize" r
+	expect(${1}).toHaveSize(${2})${0}
+endsnippet
+
+# Numerical Matchers
+
+snippet "expe?c?t?" "expect ... toBeSmallerThan" r
+	expect(${1}).toBeSmallerThan(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toBeGreaterThan" r
+	expect(${1}).toBeGreaterThan(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toBeIn" r
+	expect(${1}).toBeIn(${2})${0}
+endsnippet
+
+# String Matchers
+
+snippet "expe?c?t?" "expect ... toContain" r
+	expect(${1}).toContain(${2})${0}
+endsnippet
+
+# Observer
+
+snippet "expe?c?t?" "expect ... toHaveNoValues" r
+	expect(${1:observer}).toHaveNoValues()${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toHaveValues" r
+	expect(${1:observer}).toHaveValues(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toHaveValueCount" r
+	expect(${1:observer}).toHaveValueCount(${2})${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toBeCompleted" r
+	expect(${1:observer}).toBeCompleted()${0}
+endsnippet
+
+snippet "expe?c?t?" "expect ... toHaveError" r
+	expect(${1:observer}).toHaveError(${2:expection})${0}
+endsnippet

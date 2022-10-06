@@ -1,0 +1,33 @@
+#######################################################################
+#                            Rust Clap Snippets                       #
+#######################################################################
+
+priority -50
+
+# --------------------------------------------------
+# Clap - Command Line Processor
+# --------------------------------------------------
+snippet #clan "#[clap(name = '?')]" b
+#[clap(name = "$1")]$0
+endsnippet
+
+snippet #cla "#[clap(short = ?, long = ?)]" b
+#[clap(short = "$1", long = "$2")]
+$2: $3,
+$0
+endsnippet
+
+snippet Args "clap Args" b
+#[derive(IntoApp, FromArgMatches)]
+#[clap(name = "${1:prog}")]
+struct Args {
+
+	#[clap(short = "$2", long = "${3:option}")]
+	$3: ${4:type},
+
+	$0
+
+}
+endsnippet
+
+# vim:ft=snippets:

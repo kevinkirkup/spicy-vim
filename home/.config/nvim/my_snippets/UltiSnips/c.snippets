@@ -1,0 +1,286 @@
+###########################################################################
+# File Sections
+###########################################################################
+
+snippet finc "File includes" b
+//////////////////////////////////////////////////////////////////////
+/// @name Includes
+//@{
+
+${0}
+
+//@} End of Includes
+endsnippet
+
+snippet fdef "File Defines" b
+//////////////////////////////////////////////////////////////////////
+/// @name Defines
+//@{
+
+${0}
+
+//@} End of Defines
+endsnippet
+
+snippet ftype "File Typedefs" b
+//////////////////////////////////////////////////////////////////////
+/// @name Typedefs
+//@{
+
+${0}
+
+//@} End of Typedefs
+endsnippet
+
+snippet ftypes "File Types" b
+//////////////////////////////////////////////////////////////////////
+/// @name Types
+//@{
+
+${0}
+
+//@} End of Types
+endsnippet
+
+snippet fconst "Const Types" b
+//////////////////////////////////////////////////////////////////////
+/// @name Consts
+//@{
+
+${0}
+
+//@} End of Consts
+endsnippet
+
+snippet fdata "File Data" b
+//////////////////////////////////////////////////////////////////////
+/// @name Data
+//@{
+
+${0}
+
+//@} End of Data
+endsnippet
+
+snippet fprivate "File Private Methods" b
+//////////////////////////////////////////////////////////////////////
+/// @name Private Methods
+//@{
+
+${0}
+
+//@} End of Private Methods
+endsnippet
+
+snippet fpublic "File Public Methods" b
+//////////////////////////////////////////////////////////////////////
+/// @name Methods
+//@{
+
+${0}
+
+//@} End of Methods
+endsnippet
+
+snippet fsec "File Section" b
+//////////////////////////////////////////////////////////////////////
+/// @name ${1:Section Name}
+//@{
+
+${0}
+
+//@} End of $1
+endsnippet
+
+
+###########################################################################
+# Keywords
+###########################################################################
+
+snippet bug
+	 /* :BUG: `strftime("%c")`:`g:snips_email`: ${1} */
+endsnippet
+
+snippet hack
+	 /* :HACK: `strftime("%c")`:`g:snips_email`: ${1} */
+endsnippet
+
+snippet compiler
+	 /* :COMPILER:`strftime("%c")`:`g:snips_email`: ${1} */
+endsnippet
+
+snippet todo
+	 /* :TODO: `strftime("%c")`:`g:snips_email`: ${1} */
+endsnippet
+
+snippet tricky
+	 /* :TRICKY: `strftime("%c")`:`g:snips_email`: ${1} */
+endsnippet
+
+snippet warning
+	 /* :WARNING: `strftime("%c")`:`g:snips_email`: ${1} */
+endsnippet
+
+snippet workaround
+	 /* :WORKAROUND: `strftime("%c")`:`g:snips_email`: ${1} */
+endsnippet
+
+snippet keyword
+	 /* :${1}: `strftime("%c")`:`g:snips_email`: ${2} */
+endsnippet
+
+###########################################################################
+# Special
+###########################################################################
+
+snippet empty
+	/* EMPTY */
+endsnippet
+
+snippet fall-through
+	/* FALL THROUGH */
+endsnippet
+
+snippet not-reached
+	/* NOT REACHED */
+endsnippet
+
+###########################################################################
+# Files
+###########################################################################
+
+snippet fh "C Style File Header" b
+/*#################################################################
+#   ____ _                 ____            _                      #
+#  / ___(_)___  ___ ___   / ___| _   _ ___| |_ ___ _ __ ___  ___  #
+# | |   | / __|/ __/ _ \  \___ \| | | / __| __/ _ \ '_ \` _ \/ __| #
+# | |___| \__ \ (_| (_) |  ___) | |_| \__ \ ||  __/ | | | | \__ \ #
+#  \____|_|___/\___\___/  |____/ \__, |___/\__\___|_| |_| |_|___/ #
+#                                |___/                            #
+#                                                                 #
+###################################################################
+# Copyright 2015 Cisco Systems (USA)                              #
+# All rights, including trade secret rights, reserved.            #
+#################################################################*/
+${0}
+endsnippet
+
+snippet fh "C Style File Header with Inclusion Guards" b
+/*#################################################################
+#   ____ _                 ____            _                      #
+#  / ___(_)___  ___ ___   / ___| _   _ ___| |_ ___ _ __ ___  ___  #
+# | |   | / __|/ __/ _ \  \___ \| | | / __| __/ _ \ '_ \` _ \/ __| #
+# | |___| \__ \ (_| (_) |  ___) | |_| \__ \ ||  __/ | | | | \__ \ #
+#  \____|_|___/\___\___/  |____/ \__, |___/\__\___|_| |_| |_|___/ #
+#                                |___/                            #
+#                                                                 #
+###################################################################
+# Copyright 2015 Cisco Systems (USA)                              #
+# All rights, including trade secret rights, reserved.            #
+#################################################################*/
+#ifndef ${1:INCLUSION_GUARD_`snip.fn.upper()`_H}
+#define ${1}
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+${0}
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // ${1}
+endsnippet
+
+# Additional
+snippet td "Typedef"
+typedef ${1:int} ${2:MyCustomType};
+endsnippet
+
+snippet wh "while loop"
+while(${1:/* condition */}) {
+
+	${VISUAL}$0
+}
+endsnippet
+
+snippet do "do...while loop (do)"
+do {
+
+	${VISUAL}$0
+} while(${1:/* condition */});
+endsnippet
+
+snippet fprintf "fprintf ..."
+fprintf(${1:stderr}, "${2:%s}\n"${2/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$3${2/([^%]|%%)*(%.)?.*/(?2:\);)/}
+endsnippet
+
+snippet if "if .. (if)"
+if (${1:/* condition */}) {
+
+	${VISUAL}$0
+}
+endsnippet
+
+snippet el "else .. (else)"
+} else {
+
+	${VISUAL}$0
+}
+endsnippet
+
+snippet eli "else if .. (eli)"
+} else if (${1:/* condition */}) {
+
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if .. else (ife)"
+if (${1:/* condition */}) {
+
+	$2
+} else {
+
+	${3:/* else */}
+}
+endsnippet
+
+snippet fun "function" b
+${1:void} ${2:function_name}($3) {
+
+	${VISUAL}$0
+}
+endsnippet
+
+snippet for "for loop (for)"
+for (${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fori "for int loop (fori)"
+for (${4:int} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+
+	${VISUAL}$0
+}
+endsnippet
+
+snippet st "struct"
+struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`} {
+
+	${0:/* data */}
+};
+endsnippet
+
+snippet main "main() (main)"
+int main(int argc, char *argv[]) {
+
+	${VISUAL}$0
+	return 0;
+}
+endsnippet
+# vim:ft=snippets:

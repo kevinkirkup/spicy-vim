@@ -1,0 +1,46 @@
+#######################################################################
+#                            Rust Snippets                            #
+#######################################################################
+
+priority -50
+
+# --------------------------------------------------
+# Macros
+# --------------------------------------------------
+
+snippet "der?i?v?e?" "#[derive(?)]" r
+#[derive($1)]
+$0
+endsnippet
+
+# --------------------------------------------------
+# Result snippets
+# --------------------------------------------------
+
+snippet res "Result<...>" b
+Result<$1, $2>
+endsnippet
+
+snippet ok "Ok()" b
+Ok($0)
+endsnippet
+
+snippet err "Err()" b
+Err("$0".into())
+endsnippet
+
+# --------------------------------------------------
+# Option snippets
+# --------------------------------------------------
+
+snippet res "Option<...>" b
+Option<$1>
+endsnippet
+
+snippet so "Some()" b
+Some($0)
+endsnippet
+
+snippet n "None" b
+None
+endsnippet

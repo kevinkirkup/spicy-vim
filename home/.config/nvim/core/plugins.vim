@@ -274,6 +274,8 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'my_snippets']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""

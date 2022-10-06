@@ -1,0 +1,32 @@
+#######################################################################
+#                            Rust Snippets                            #
+#######################################################################
+
+priority -50
+
+# --------------------------------------------------
+# Unit Tests snippets
+# --------------------------------------------------
+snippet tmod "mod test" b
+#[cfg(test)]
+mod tests {
+	user super::*;
+
+	$0
+}
+endsnippet
+
+snippet tc "test fn" b
+#[test]
+fn test_${1}() {
+	$0
+}
+endsnippet
+
+snippet tc "test fn w/ panic" b
+#[test]
+#[should_panic(expected = "${2}")]
+fn test_${1}() {
+	$0
+}
+endsnippet

@@ -1,0 +1,251 @@
+# vim:ft=snippets:
+# Snippets for Go gRPC
+
+priority -50
+
+# --------------------------------------------------
+# Expects
+# --------------------------------------------------
+snippet es "Expect Should ..." b
+Expect(${1:actual}).Should($2)
+endsnippet
+
+snippet esn "Expect Should Not ..." b
+Expect(${1:actual}).ShouldNot($2)
+endsnippet
+
+snippet et "Expect To ..." b
+Expect(${1:actual}).To($2)
+endsnippet
+
+snippet ent "Expect Not To ..." b
+Expect(${1:actual}).NotTo($2)
+endsnippet
+
+snippet etn "Expect To Not ..." b
+Expect(${1:actual}).ToNot($2)
+endsnippet
+
+# --------------------------------------------------
+# Async
+# --------------------------------------------------
+snippet ev "Eventually ..." b
+Eventually(func() ${1:result_type} {
+	${2:async_operation}
+}).$0
+endsnippet
+
+snippet evtp "Eventually w/ Timeout/Poll Interval..." b
+Eventually(func() ${1:result_type} {
+	${2:async_operation}
+}, ${3:TIMEOUT}, ${4:POLLING_INTERVAL}).$0
+endsnippet
+
+snippet con "Consistently ..." b
+Consistently(func() ${1:result_type} {
+	${2:async_operation}
+}).$0
+endsnippet
+
+snippet condp "Consistently w/ Timeout/Poll Interval..." b
+Consistently(func() ${1:result_type} {
+	${2:async_operation}
+}, ${3:DURATION}, ${4:POLLING_INTERVAL}).$0
+endsnippet
+
+snippet det "Default Eventual Timeout ..." b
+SetDefaultEventuallyTimeout(${1:Duration})
+endsnippet
+
+snippet depo "Default Eventual Polling Interval..." b
+SetDefaultEventuallyPollingInterval(${1:Duration})
+endsnippet
+
+snippet dcd "Default Consistently Polling Interval..." b
+SetDefaultConsistentlyDuration(${1:Duration})
+endsnippet
+
+snippet dcpo "Default Consistently Polling Interval..." b
+SetDefaultConsistentlyPollingInterval(${1:Duration})
+endsnippet
+
+# --------------------------------------------------
+# Matchers
+# --------------------------------------------------
+# Asserting Equivalence
+
+snippet eq "Equal" b
+Equal($0)
+endsnippet
+
+snippet beqt "Be Equivalent To ..." b
+BeEquivalentTo($0)
+endsnippet
+
+snippet bit "Be Identical To ..." b
+BeIdenticalTo($0)
+endsnippet
+
+snippet batt "Be Assignable To Type Of ..." b
+BeAssignableToTypeOf($0)
+endsnippet
+
+
+# Asserting Presence
+snippet nil "Be Nil" b
+BeNil()
+endsnippet
+
+snippet zero "Be Zero" b
+BeZero()
+endsnippet
+
+# Asserting Truthiness
+snippet true "Be True" b
+BeTrue()
+endsnippet
+
+snippet false "Be False" b
+BeFalse()
+endsnippet
+
+# Asserting on Errors
+snippet occured "Have Occurred" b
+HaveOccurred()
+endsnippet
+
+snippet suc "Succeed" b
+Succeed()
+endsnippet
+
+snippet me "Match Error" b
+MatchError($0)
+endsnippet
+
+# Working with Channels
+snippet closed "Be Closed" b
+BeClosed()
+endsnippet
+
+snippet rec "Receive" b
+Receive()
+endsnippet
+
+snippet sent "Be Sent" b
+BeSent($0)
+endsnippet
+
+# Working with Files
+snippet fexisting "Be an Existing File ..." b
+BeAnExistingFile()
+endsnippet
+
+snippet freg "Be a regular file ..." b
+BeARegularFile()
+endsnippet
+
+snippet dir "Be a directory ..." b
+BeADirectory
+endsnippet
+
+# Working with Strings, JSON and YAML
+snippet cstr "Contains Substring ..." b
+ContainSubstring($0)
+endsnippet
+
+snippet pre "Have Prefix ..." b
+HavePrefix($0)
+endsnippet
+
+snippet suf "Have Suffix ..." b
+HaveSuffix($0)
+endsnippet
+
+snippet match "Match Regex" b
+MatchRegexp($0)
+endsnippet
+
+snippet json "Match JSON" b
+MatchJSON($0)
+endsnippet
+
+snippet yaml "Match YAML" b
+MatchYAML($0)
+endsnippet
+
+# Working with Collections
+snippet empty "Be Empty" b
+BeEmpty()
+endsnippet
+
+snippet len "Have Length" b
+HaveLen($0)
+endsnippet
+
+snippet cap "Have Capacity" b
+HaveCap($0)
+endsnippet
+
+snippet con "Contains Element" b
+ContainElement($0)
+endsnippet
+
+snippet ele "" b
+ContainElements($0)
+endsnippet
+
+snippet con "" b
+ConsistOf($0)
+endsnippet
+
+snippet key "" b
+HaveKey($0)
+endsnippet
+
+snippet key "" b
+HaveKeyWithValue($0)
+endsnippet
+
+# Working with Numbers and Times
+snippet num "" b
+BeNumerically($0)
+endsnippet
+
+snippet tmp "" b
+BeTemporally($0)
+endsnippet
+
+# Working with HTTP responses
+snippet hhs "" b
+HaveHTTPStatus($0)
+endsnippet
+
+# Asserting on Panics
+snippet panic "" b
+Panic()
+endsnippet
+
+# Composing Matchers
+snippet and "" b
+And($0)
+endsnippet
+
+snippet all "" b
+SatisfyAll($0)
+endsnippet
+
+snippet or "" b
+Or($0)
+endsnippet
+
+snippet any "" b
+SatisfyAny($0)
+endsnippet
+
+snippet not "" b
+Not($0)
+endsnippet
+
+snippet wt "" b
+WithTransform($0)
+endsnippet

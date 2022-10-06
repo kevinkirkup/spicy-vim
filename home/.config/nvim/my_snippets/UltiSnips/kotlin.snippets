@@ -1,0 +1,109 @@
+# Snippets for Kotlin
+
+priority -50
+
+global !p
+import os
+def package_path(path):
+	dirs = os.path.dirname(path).split(os.path.sep)
+	start = dirs.index("kotlin") + 1
+	dirs = dirs[start:]
+	return ".".join(dirs)
+
+endglobal
+
+global !p
+def complete(t, opts):
+	if t:
+		opts = [m[len(t):] for m in opts if m.startswith(t)]
+	if len(opts) == 1:
+		return opts[0]
+	return '(' + '|'.joing(opts) + ')'
+endglobal
+
+snippet "pac?k?a?g?e?" "Package" rb
+package ${0:`!p snip.rv = package_path(path)`}
+endsnippet
+
+snippet "impo?r?t?" "Import" rb
+import ${0:com.pureport.kato}
+endsnippet
+
+snippet fun "Function"
+fun ${1:name}(${2}): ${3:String} {
+	${4}
+}
+endsnippet
+
+snippet pfun "Private Function"
+private fun ${1:name}(${2}): ${3:String} {
+	${4}
+}
+endsnippet
+
+snippet "retu?r?n?" "return" r
+return ${0}
+endsnippet
+
+snippet "when?" "when" r
+when(${1:${VISUAL}}) {
+	${2} -> ${3}
+}
+endsnippet
+
+snippet "cla?s?s?" "class" r
+class ${1:`!p snip.rv = os.path.basename(path).split(".")[0]`}(
+	${2}
+) {
+${0:${VISUAL}}
+}
+endsnippet
+
+snippet cobj "companion object"
+companion object {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet "obje?c?t?" "object" r
+object ${1} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet if
+if(${1}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ife "if ... else"
+if(${1}) {
+	${2:${VISUAL}}
+} else {
+	${0}
+}
+endsnippet
+
+snippet init "Class Init"
+init() {
+	${0}
+}
+endsnippet
+
+snippet val "val"
+val ${1:name}${2:: ${3:type}}${4: = ${5}}${0}
+endsnippet
+
+snippet var
+var ${1:name}${2:: ${3:type}}${4: = ${5}}${0}
+endsnippet
+
+snippet pval "val"
+private val ${1:name}${2:: ${3:type}}${4: = ${5}}${0}
+endsnippet
+
+snippet pvar
+private var ${1:name}${2:: ${3:type}}${4: = ${5}}${0}
+endsnippet
+

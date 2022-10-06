@@ -1,0 +1,126 @@
+# vim:ft=snippets:
+# Snippets for Ginkgo
+
+priority -50
+
+# --------------------------------------------------
+# Mock Setup
+# --------------------------------------------------
+snippet initm "Init mocks ..." b
+var (
+	mockCtrl         *gomock.Controller
+	${1:mockItem} *mocks.${2:MockType}
+)
+
+BeforeEach(func() {
+	mockCtrl = gomock.NewController(GinkgoT())
+	$1 = mocks.New$2(mockCtrl)
+})
+
+AfterEach(func() {
+	mockCtrl.Finish()
+})
+endsnippet
+
+# --------------------------------------------------
+# Organization
+# --------------------------------------------------
+snippet it "It block ..." b
+It("${1:should do something...}", func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet describe "Describe block ..." b
+Describe("${1:with ...}", func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet context "Context block ..." b
+Context("${1:with ...}", func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+# --------------------------------------------------
+# Global Setup and Teardown
+# --------------------------------------------------
+snippet bs "Before Suite ..." b
+var _ = BeforeSuite(func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet as "After Suite ..." b
+var _ = AfterSuite(func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+# --------------------------------------------------
+# Common Setup and Teardown
+# --------------------------------------------------
+snippet be "BeforeEach block ..." b
+BeforeEach(func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet ae "AfterEach block ..." b
+AfterEach(func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+# --------------------------------------------------
+# Separate Creation and Configuration
+# --------------------------------------------------
+snippet jbe "JustBeforeEach block ..." b
+JustBeforeEach(func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+snippet jae "JustAfterEach block ..." b
+JustAfterEach(func() {
+	${0:${VISUAL}}
+})
+endsnippet
+
+# --------------------------------------------------
+# Documenting
+# --------------------------------------------------
+snippet by "By block ..." b
+By("${1:Description}")
+$0
+endsnippet
+
+snippet td "Test Description ..." b
+CurrentGinkgoTestDescription().Test.Text$0
+endsnippet
+
+# --------------------------------------------------
+# Table Driven Testing
+# --------------------------------------------------
+snippet dt "Describe Table ..." b
+DescribeTable("${1:Description}", func(${2:params}, ${3:result}) {
+		$0
+	},
+	// Entries
+)
+endsnippet
+
+snippet dtd "Describe Table w/ Description ..." b
+DescribeTable("${1:Description}", func(${2:params}, ${3:result}) string {
+		$0
+	},
+	// Entries
+
+	return fmt.Sprintf("Description")
+)
+endsnippet
+
+snippet entry "Table Entry ..." b
+Entry("${1:Description}", ${2:params}, ${3:result}),
+endsnippet
