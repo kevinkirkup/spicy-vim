@@ -6,9 +6,7 @@
 local api = vim.api
 local utils = require('utils')
 
--- if utils.exists("g:gui_vimr") then
---   vim.cmd [[source ~/.config/nvim/ginit.vim]]
--- end
+-- vim.lsp.set_log_level("debug")
 
 --------------------------------------------------
 -- check if we have the latest stable version of nvim

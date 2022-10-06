@@ -856,7 +856,7 @@ function s:HEX_MapChars()
   execute "inoremap \/ \/<ESC>:call <SID>HEX_Char()<CR>"
   execute "inoremap \" \"<ESC>:call <SID>HEX_Char()<CR>"
   execute "inoremap \! \!<ESC>:call <SID>HEX_Char()<CR>"
-  execute "inoremap \ง \ง<ESC>:call <SID>HEX_Char()<CR>"
+  execute "inoremap \ยง \ยง<ESC>:call <SID>HEX_Char()<CR>"
   execute "inoremap \~ \~<ESC>:call <SID>HEX_Char()<CR>"
   
   "
@@ -902,7 +902,7 @@ function s:HEX_UnMapChars()
   execute "iunmap \/"
   execute "iunmap \""
   execute "iunmap \!"
-  execute "iunmap \ง"
+  execute "iunmap \ยง"
   execute "iunmap \~"
 endfun
 " 
