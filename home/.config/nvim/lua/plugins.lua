@@ -61,14 +61,12 @@ packer.startup {
     -- LSP
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp']] }
     use { "dense-analysis/ale" }
-    if vim.g.is_mac then
-      use {
-        "nvim-treesitter/nvim-treesitter",
-        event = "BufEnter",
-        run = ":TSUpdate",
-        config = [[require('config.treesitter')]],
-      }
-    end
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      event = "BufEnter",
+      run = ":TSUpdate",
+      config = [[require('config.treesitter')]],
+    }
 
     -- Super fast buffer jump
     use {
@@ -99,6 +97,7 @@ packer.startup {
 
     -- search emoji and other symbols
     use { "nvim-telescope/telescope-symbols.nvim", after = "telescope.nvim" }
+    use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
 
     -- Themes
     use { "wadackel/vim-dogrun", opt = true }
@@ -112,23 +111,26 @@ packer.startup {
     use { "travisjeffery/vim-colors", opt = true }
     use { "arcticicestudio/nord-vim", opt = true }
 
-    use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
-
     use {
       "nvim-lualine/lualine.nvim",
       event = "VimEnter",
+      requires = { "kyazdani42/nvim-web-devicons" },
       config = [[require('config.statusline')]],
     }
 
     use { "akinsho/bufferline.nvim",
       event = "VimEnter",
+      requires = { "kyazdani42/nvim-web-devicons" },
       config = [[require('config.bufferline')]]
     }
 
     -- fancy start screen
-    use { "glepnir/dashboard-nvim", event = "VimEnter",
-      config = [[require('config.dashboard-nvim')]]
-    }
+    -- use {
+    --   "glepnir/dashboard-nvim",
+    --   event = "VimEnter",
+    --   requires = { "kyazdani42/nvim-web-devicons" },
+    --   config = [[require('config.dashboard-nvim')]]
+    -- }
 
     use {
       "lukas-reineke/indent-blankline.nvim",
@@ -157,8 +159,6 @@ packer.startup {
     use { "SirVer/ultisnips", event = "InsertEnter" }
     use { "honza/vim-snippets", after = "ultisnips" }
 
-    -- Plug 'kevinkirkup/vim-snippets'
-
     -- Automatic insertion and deletion of a pair of characters
     use { "Raimondi/delimitMate", event = "InsertEnter" }
 
@@ -169,7 +169,8 @@ packer.startup {
     use { "svermeulen/vim-yoink", event = "VimEnter" }
 
     -- Auto format tools
-    use { "sbdchd/neoformat", cmd = { "Neoformat" } }
+    -- use { "sbdchd/neoformat", cmd = { "Neoformat" } }
+    use { "Chiel92/vim-autoformat" }
 
     -- Git command inside vim
     use { "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
@@ -237,27 +238,24 @@ packer.startup {
     use { "jdhao/whitespace.nvim", event = "VimEnter" }
 
     -- file explorer
-    use {
-      "kyazdani42/nvim-tree.lua",
-      requires = { "kyazdani42/nvim-web-devicons" },
-      config = [[require('config.nvim-tree')]],
-    }
     -- use {
-    --   "scrooloose/nerdtree",
-    --   tag = '6.10.16'
+    --   "kyazdani42/nvim-tree.lua",
+    --   requires = { "kyazdani42/nvim-web-devicons" },
+    --   config = [[require('config.nvim-tree')]],
     -- }
+    use {
+      "scrooloose/nerdtree",
+      tag = '6.10.16'
+    }
 
     use { "benmills/vimux", commit = "37f4119" }
-    use { "vim-airline/vim-airline" }
-    use { "vim-airline/vim-airline-themes" }
+    -- use { "vim-airline/vim-airline" }
+    -- use { "vim-airline/vim-airline-themes" }
     use { "mileszs/ack.vim" }
     use { "junegunn/fzf" }
     use { "vim-scripts/VST" }
     use { "terryma/vim-multiple-cursors", tag = "v2.2" }
 
-    -- Plug 'tpope/vim-fugitive', { 'tag': 'v3.7' }
-    -- Plug 'Chiel92/vim-autoformat'
-    -- Plug 'tpope/vim-endwise', { 'tag': 'v1.3' }
     -- Plug 'rizzatti/dash.vim'
     -- Plug 'ctrlpvim/ctrlp.vim'
     -- Plug 'ervandew/supertab'

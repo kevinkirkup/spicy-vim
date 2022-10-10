@@ -19,6 +19,7 @@ local utils = require('utils')
 --   api.nvim_err_writeln(msg)
 --   return
 -- end
+vim.opt.termguicolors = true
 
 --------------------------------------------------
 -- Source Configuration files

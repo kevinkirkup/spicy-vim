@@ -15,6 +15,10 @@ snippet insp "|> IO.inspect(label:XXX)" b
 |> IO.inspect(label: "*** ${1:name}")
 endsnippet
 
+snippet db "|> dbg()" b
+|> dbg()
+endsnippet
+
 snippet st "Print Stack Trace" b
 IO.inspect(Process.info(self(), :current_stacktrace), label: "STACKTRACE")
 endsnippet
