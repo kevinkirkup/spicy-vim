@@ -32,7 +32,6 @@ vim.cmd("packadd packer.nvim")
 local packer = require("packer")
 local packer_util = require("packer.util")
 
-
 ----------------------------------------------------
 -- Plugins
 ----------------------------------------------------
@@ -57,6 +56,17 @@ packer.startup {
     if vim.g.is_mac then
       use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
     end
+
+    use { "junegunn/fzf",
+      run = function()
+        vim.fn['fzf#Install']()
+      end
+    }
+    use {
+      "kevinhwang91/nvim-bqf",
+      ft = "qf",
+      config = [[require('config.bqf')]]
+    }
 
     -- LSP
     use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp']] }
@@ -177,8 +187,6 @@ packer.startup {
     -- Git command inside vim
     use { "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
 
-    use { "kevinhwang91/nvim-bqf", ft = "qf", config = [[require('config.bqf')]] }
-
     -- Another markdown plugin
     use { "preservim/vim-markdown", ft = { "markdown" } }
 
@@ -188,11 +196,11 @@ packer.startup {
     -- Vim tabular plugin for manipulate tabular, required by markdown plugins
     use { "godlygeek/tabular", cmd = { "Tabularize" } }
 
-    use { "folke/zen-mode.nvim", cmd = "ZenMode", config = [[require('config.zen-mode')]] }
+    -- use { "folke/zen-mode.nvim", cmd = "ZenMode", config = [[require('config.zen-mode')]] }
 
     -- Additional powerful text object for vim, this plugin should be studied
     -- carefully to use its full power
-    -- use { "wellle/targets.vim", event = "VimEnter" }
+    use { "wellle/targets.vim", event = "VimEnter" }
 
     -- Plugin to manipulate character pairs quickly
     use { "machakann/vim-sandwich", event = "VimEnter" }
@@ -241,7 +249,7 @@ packer.startup {
     -- }
 
     -- show and trim trailing whitespaces
-    use { "jdhao/whitespace.nvim", event = "VimEnter" }
+    use { "nvim-zh/whitespace.nvim", event = "VimEnter" }
 
     -- file explorer
     -- use {
@@ -257,7 +265,6 @@ packer.startup {
 
     use { "benmills/vimux", commit = "37f4119" }
     use { "mileszs/ack.vim" }
-    use { "junegunn/fzf" }
     use { "vim-scripts/VST" }
     use { "terryma/vim-multiple-cursors", tag = "v2.2" }
 

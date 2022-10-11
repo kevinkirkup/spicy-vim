@@ -223,3 +223,6 @@ keymap.set("c", "<C-A>", "<HOME>")
 
 -- Delete the character to the right of the cursor
 keymap.set("i", "<C-D>", "<DEL>")
+
+-- Trim whitespace
+keymap.set("n", "<Leader>dd", ":StripTrailingWhitespace<CR>", { silent = true })

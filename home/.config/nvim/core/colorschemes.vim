@@ -5,3 +5,5 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set background=light
 colorscheme blackboard
+
+highlight IndentBlanklineIndent guifg=#353535 gui=nocombine

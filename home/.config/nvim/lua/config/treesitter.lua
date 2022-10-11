@@ -2,6 +2,11 @@ local treesitter = require("nvim-treesitter.configs")
 
 -- configuration for treesiter
 treesitter.setup {
+  -- Matchup configuration
+  matchup = {
+    enable = true,
+    disable = { }
+  },
 
   -- A list of parser names, or "all"
   ensure_installed = {"cpp", "elixir", "vim", "lua", "heex", "eex", "rust", "python"},

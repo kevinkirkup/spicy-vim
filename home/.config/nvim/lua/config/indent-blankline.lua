@@ -1,9 +1,20 @@
-local api = vim.api
-
 vim.opt.list = true
 vim.cmd [[highlight IndentBlanklineIndent guifg=#353535 gui=nocombine]]
 
-local exclude_ft = { "help", "git", "markdown", "snippets", "text", "gitconfig", "alpha", "dashboard" }
+local exclude_ft = {
+  "help",
+  "alpha",
+  "dashboard",
+  "checkhealth",
+  "packer",
+  "lspinfo",
+  "NERDTree",
+  "git",
+  "gitconfig",
+  "markdown",
+  "snippets",
+  "text"
+}
 require("indent_blankline").setup {
   -- U+2502 may also be a good choice, it will be on the middle of cursor.
   -- U+250A is also a good choice
@@ -16,9 +27,12 @@ require("indent_blankline").setup {
 
   show_end_of_line = false,
   disable_with_nolist = true,
-  buftype_exclude = { "terminal" },
+  buftype_exclude = { "terminal", "nofile" },
   filetype_exclude = exclude_ft,
+  use_treesitter = true,
 }
+
+local api = vim.api
 
 local gid = api.nvim_create_augroup("indent_blankline", { clear = true })
 api.nvim_create_autocmd("InsertEnter", {
