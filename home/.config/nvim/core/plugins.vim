@@ -32,6 +32,8 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Airline configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 0
+
 if has('gui_running')
   let g:airline_theme='material'
 else

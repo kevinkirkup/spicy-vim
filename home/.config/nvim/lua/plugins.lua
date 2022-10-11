@@ -100,23 +100,25 @@ packer.startup {
     use { "kyazdani42/nvim-web-devicons", event = "VimEnter" }
 
     -- Themes
-    use { "wadackel/vim-dogrun", opt = true }
-    use { "rakr/vim-one", opt = true }
-    use { "hzchirs/vim-material", opt = true }
-    use { "embark-theme/vim", opt = true }
-    use { "drewtempelmeyer/palenight.vim", opt = true }
-    use { "cocopon/iceberg.vim", opt = true }
-    use { "fenetikm/falcon", opt = true }
-    use { "jarodl/cobalt.vim", opt = true }
-    use { "travisjeffery/vim-colors", opt = true }
-    use { "arcticicestudio/nord-vim", opt = true }
+    -- use { "wadackel/vim-dogrun", opt = true }
+    -- use { "rakr/vim-one", opt = true }
+    -- use { "hzchirs/vim-material", opt = true }
+    -- use { "embark-theme/vim", opt = true }
+    -- use { "drewtempelmeyer/palenight.vim", opt = true }
+    -- use { "cocopon/iceberg.vim", opt = true }
+    -- use { "fenetikm/falcon", opt = true }
+    -- use { "jarodl/cobalt.vim", opt = true }
+    -- use { "travisjeffery/vim-colors", opt = true }
+    -- use { "arcticicestudio/nord-vim", opt = true }
 
-    use {
-      "nvim-lualine/lualine.nvim",
-      event = "VimEnter",
-      requires = { "kyazdani42/nvim-web-devicons" },
-      config = [[require('config.statusline')]],
-    }
+    -- use {
+    --   "nvim-lualine/lualine.nvim",
+    --   event = "VimEnter",
+    --   requires = { "kyazdani42/nvim-web-devicons" },
+    --   config = [[require('config.statusline')]],
+    -- }
+    use { "vim-airline/vim-airline" }
+    use { "vim-airline/vim-airline-themes" }
 
     use { "akinsho/bufferline.nvim",
       event = "VimEnter",
@@ -190,7 +192,7 @@ packer.startup {
 
     -- Additional powerful text object for vim, this plugin should be studied
     -- carefully to use its full power
-    use { "wellle/targets.vim", event = "VimEnter" }
+    -- use { "wellle/targets.vim", event = "VimEnter" }
 
     -- Plugin to manipulate character pairs quickly
     use { "machakann/vim-sandwich", event = "VimEnter" }
@@ -221,18 +223,22 @@ packer.startup {
     use { "skywind3000/asyncrun.vim", opt = true, cmd = { "AsyncRun" } }
 
     -- The missing auto-completion for cmdline!
-    use { "gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]] }
+    use {
+      "gelguy/wilder.nvim",
+      opt = true,
+      config = [[require('config.wilder')]]
+    }
 
     -- showing keybindings
-    use {
-      "folke/which-key.nvim",
-      event = "VimEnter",
-      config = function()
-        vim.defer_fn(function()
-          require("config.which-key")
-        end, 2000)
-      end,
-    }
+    -- use {
+    --   "folke/which-key.nvim",
+    --   event = "VimEnter",
+    --   config = function()
+    --     vim.defer_fn(function()
+    --       require("config.which-key")
+    --     end, 2000)
+    --   end,
+    -- }
 
     -- show and trim trailing whitespaces
     use { "jdhao/whitespace.nvim", event = "VimEnter" }
@@ -244,13 +250,12 @@ packer.startup {
     --   config = [[require('config.nvim-tree')]],
     -- }
     use {
-      "scrooloose/nerdtree",
+      "preservim/nerdtree",
+      requires = { "kyazdani42/nvim-web-devicons" },
       tag = '6.10.16'
     }
 
     use { "benmills/vimux", commit = "37f4119" }
-    -- use { "vim-airline/vim-airline" }
-    -- use { "vim-airline/vim-airline-themes" }
     use { "mileszs/ack.vim" }
     use { "junegunn/fzf" }
     use { "vim-scripts/VST" }
