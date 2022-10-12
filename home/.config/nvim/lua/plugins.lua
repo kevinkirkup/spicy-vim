@@ -77,15 +77,15 @@ packer.startup {
     }
 
     -- Super fast buffer jump
-    use {
-      "phaazon/hop.nvim",
-      event = "VimEnter",
-      config = function()
-        vim.defer_fn(function()
-          require("config.nvim_hop")
-        end, 2000)
-      end,
-    }
+    -- use {
+    --   "phaazon/hop.nvim",
+    --   event = "VimEnter",
+    --   config = function()
+    --     vim.defer_fn(function()
+    --       require("config.nvim_hop")
+    --     end, 2000)
+    --   end,
+    -- }
 
     -- Show match number and index for searching
     use {
@@ -179,8 +179,7 @@ packer.startup {
     use { "svermeulen/vim-yoink", event = "VimEnter" }
 
     -- Auto format tools
-    -- use { "sbdchd/neoformat", cmd = { "Neoformat" } }
-    use { "Chiel92/vim-autoformat" }
+    use { "sbdchd/neoformat", cmd = { "Neoformat" } }
 
     -- Git command inside vim
     use { "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
@@ -192,7 +191,7 @@ packer.startup {
     use { "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } }
 
     -- Vim tabular plugin for manipulate tabular, required by markdown plugins
-    use { "godlygeek/tabular", cmd = { "Tabularize" } }
+    -- use { "godlygeek/tabular", cmd = { "Tabularize" } }
 
     -- use { "folke/zen-mode.nvim", cmd = "ZenMode", config = [[require('config.zen-mode')]] }
 
