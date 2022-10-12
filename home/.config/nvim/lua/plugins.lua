@@ -53,9 +53,7 @@ packer.startup {
     use { "hrsh7th/cmp-path", after = "nvim-cmp" }
     use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }
     use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
-    if vim.g.is_mac then
-      use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
-    end
+    use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
 
     use { "junegunn/fzf",
       run = function()
@@ -286,9 +284,6 @@ packer.startup {
 
     use { "fatih/vim-go", tag = "v1.26", ft = 'go' }
     use { "rhysd/vim-go-impl", ft = "go" }
-
-    use { "mhinz/vim-mix-format", ft = "elixir" }
-    use { "elixir-editors/vim-elixir", ft = "elixir" }
 
     use { "vim-erlang/vim-erlang-compiler", ft = "erlang" }
     use { "vim-erlang/vim-erlang-omnicomplete", ft = "erlang" }
