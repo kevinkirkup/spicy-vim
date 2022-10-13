@@ -3,6 +3,12 @@ local api = vim.api
 
 local utils = require("utils")
 
+-- Disable `targets` `b` target since it conflicts with `sandwich`.
+vim.cmd[[autocmd User targets#mappings#user call targets#mappings#extend({
+    \ 'b': {},
+    \ })
+]]
+
 -- Display a message when the current file is not in utf-8 format.
 -- Note that we need to use `unsilent` command here because of this issue:
 -- https://github.com/vim/vim/issues/4379

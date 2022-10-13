@@ -332,3 +332,12 @@ let g:ale_fixers = {
 inoremap <silent><expr><TAB>
     \ pumvisible() ? “\<C-n>” : “\<TAB>”
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Leaderf configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Lf_ShowDevIcons = 1
+let g:Lf_DevIconsFont = "Hack Nerd Font Mono"
+
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
