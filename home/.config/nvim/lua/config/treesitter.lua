@@ -27,6 +27,8 @@ treesitter.setup {
     -- list of language that will be disabled
     -- disable = { "c", "rust" },
     disable = { 'help' },
+
+    additional_vim_regex_highlighting = true,
   },
 }
 
