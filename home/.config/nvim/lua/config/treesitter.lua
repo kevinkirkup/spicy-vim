@@ -1,3 +1,9 @@
+local vim = vim
+local opt = vim.opt
+
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 local treesitter = require("nvim-treesitter.configs")
 
 -- configuration for treesiter
