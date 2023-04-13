@@ -105,7 +105,12 @@ packer.startup({
 
 		-- Completion
 		-- auto-completion engine
-		use({ "hrsh7th/nvim-cmp", after = "lspkind.nvim", config = [[require('config.nvim-cmp')]] })
+		use({
+      "hrsh7th/nvim-cmp",
+      after = "lspkind.nvim",
+      event = "InsertEnter",
+      config = [[require('config.nvim-cmp')]]
+    })
 
 		use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
 		use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
@@ -351,28 +356,28 @@ packer.startup({
       config = [[require('config.fidget-nvim')]]
     })
 
-		use({ "keith/swift.vim", ft = "swift" })
-		use({ "simrat39/rust-tools.nvim", ft = "rust", config = [[require('config.rust-tools')]] })
-		use({ "hashivim/vim-terraform", ft = "terraform" })
-		use({ "manicmaniac/coconut.vim", ft = "coconut" })
+		-- use({ "keith/swift.vim", ft = "swift" })
+		-- use({ "simrat39/rust-tools.nvim", ft = "rust", config = [[require('config.rust-tools')]] })
+		-- use({ "hashivim/vim-terraform", ft = "terraform" })
+		-- use({ "manicmaniac/coconut.vim", ft = "coconut" })
 
-		use({ "fatih/vim-go", tag = "v1.26", ft = "go" })
-		use({ "rhysd/vim-go-impl", ft = "go" })
+		-- use({ "fatih/vim-go", tag = "v1.26", ft = "go" })
+		-- use({ "rhysd/vim-go-impl", ft = "go" })
 
-		use({ "vim-erlang/vim-erlang-compiler", ft = "erlang" })
-		use({ "vim-erlang/vim-erlang-omnicomplete", ft = "erlang" })
+		-- use({ "vim-erlang/vim-erlang-compiler", ft = "erlang" })
+		-- use({ "vim-erlang/vim-erlang-omnicomplete", ft = "erlang" })
 
-		use({ "vim-scripts/Vim-R-plugin", ft = "r" })
-		use({ "hspec/hspec", ft = "haskell" })
+		-- use({ "vim-scripts/Vim-R-plugin", ft = "r" })
+		-- use({ "hspec/hspec", ft = "haskell" })
 
-		use({ "klen/python-mode", tag = "0.13.0", ft = "python" })
-		use({ "sebdah/vim-delve", ft = "python" })
+		-- use({ "klen/python-mode", tag = "0.13.0", ft = "python" })
+		-- use({ "sebdah/vim-delve", ft = "python" })
 
-		use({ "leafgarland/typescript-vim", ft = "typescript" })
-		use({ "pangloss/vim-javascript", commit = "e9a59c8", ft = "javascript" })
-		use({ "heavenshell/vim-jsdoc", ft = "javascript" })
+		-- use({ "leafgarland/typescript-vim", ft = "typescript" })
+		-- use({ "pangloss/vim-javascript", commit = "e9a59c8", ft = "javascript" })
+		-- use({ "heavenshell/vim-jsdoc", ft = "javascript" })
 
-		use({ "Glench/Vim-Jinja2-Syntax", ft = "jinja" })
+		-- use({ "Glench/Vim-Jinja2-Syntax", ft = "jinja" })
 	end,
 	config = {
 		max_jobs = 16,
