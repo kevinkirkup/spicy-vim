@@ -1,0 +1,36 @@
+# vim:ft=snippets:
+# Snippets for Elixir
+
+priority -50
+
+snippet db "|> dbg()" b
+|> dbg()
+endsnippet
+
+snippet st "Print Stack Trace" b
+IO.inspect(Process.info(self(), :current_stacktrace), label: "STACKTRACE")
+endsnippet
+
+snippet fil "Filter Field - prefix" b
+%{name: :${1:name}, field_name: :$1, binding: :${2:table}, method: :ilike},
+endsnippet
+
+snippet fil "Filter Field - contains" b
+%{name: :${1:name}, field_name: :$1, binding: :${2:table}, method: :icontains},
+endsnippet
+
+snippet fil "Filter Field - equals" b
+%{name: :${1:name}, field_name: :$1, binding: :${2:table}, method: :eq},
+endsnippet
+
+snippet fil "Filter Field - in list" b
+%{name: :${1:name}, field_name: :$1, binding: :${2:table}, method: :in},
+endsnippet
+
+snippet fil "Filter Field - year" b
+%{name: :${1:name}, field_name: :$1, binding: :${2:table}, method: :year},
+endsnippet
+
+snippet fil "Filter Field - date" b
+%{name: :${1:name}, field_name: :$1, binding: :${2:table}, method: :date},
+endsnippet
