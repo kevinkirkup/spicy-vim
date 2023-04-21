@@ -1,7 +1,7 @@
-return function(_, opts)
-	local rt = require("rust-tools")
-
-	rt.setup({
+return {
+	"simrat39/rust-tools.nvim",
+	ft = "rust",
+	opts = {
 		server = {
 			on_attach = function(_, bufnr)
 				-- Hover actions
@@ -12,5 +12,5 @@ return function(_, opts)
 				vim.keymap.set("n", "<Leader>r", rt.runnables.runnables, { buffer = bufnr })
 			end,
 		},
-	})
-end
+	},
+}

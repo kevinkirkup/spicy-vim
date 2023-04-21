@@ -1,6 +1,8 @@
 return {
-  "kevinhwang91/nvim-bqf",
-  ft = "qf",
-  config = require('user.plugins.configs.bqf'),
-  lazy = false,
+	"kevinhwang91/nvim-bqf",
+	ft = "qf",
+	opts = {
+		auto_resize_height = false,
+		preview = { auto_preview = false },
+	},
 }

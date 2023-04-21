@@ -1,6 +1,5 @@
 -- Auto format tools
 return {
-  "sbdchd/neoformat",
-  cmd = { "Neoformat" },
-  lazy = false,
+	"sbdchd/neoformat",
+	cmd = { "Neoformat" },
 }

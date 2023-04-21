@@ -1,5 +1,2 @@
 -- Modern matchit implementation
-return {
-	"andymass/vim-matchup",
-	event = "VimEnter",
-}
+return { "andymass/vim-matchup" }

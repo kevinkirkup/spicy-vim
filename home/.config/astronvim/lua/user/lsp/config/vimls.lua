@@ -1,15 +1,15 @@
 local config = require("user.util.lsp-config")
 local utils = require("user.util.misc")
 
-if utils.executable("clangd") then
+-- set up vim-language-server
+if utils.executable("vim-language-server") then
     return {
         on_attach = config.custom_attach,
-        filetypes = { "c", "cpp", "cc" },
         flags = { debounce_text_changes = 500 }
     }
 else
     return {
-        vim.notify("clangd not found!", vim.log.levels.WARN,
+        vim.notify("vim-language-server not found!", vim.log.levels.WARN,
             { title = "Nvim-config" })
     }
 end

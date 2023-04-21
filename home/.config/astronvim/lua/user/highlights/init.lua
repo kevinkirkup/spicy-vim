@@ -8,5 +8,25 @@ for type, icon in pairs(signs) do
 end
 
 return {
-
+	-- highlight! link CmpItemMenu Comment
+	--  gray
+	-- CmpItemAbbrDeprecated = {
+	-- 	guibg = NONE,
+	-- 	gui = strikethrough,
+	-- 	guifg = "#808080"
+	-- },
+	-- -- blue
+	-- CmpItemAbbrMatch = { guibg = NONE, guifg = "#569CD6" },
+	-- CmpItemAbbrMatchFuzzy = { guibg = NONE, guifg = "#569CD6" },
+	-- -- light blue
+	-- CmpItemKindVariable = { guibg = NONE, guifg = "#9CDCFE" },
+	-- CmpItemKindInterface = { guibg = NONE, guifg = "#9CDCFE" },
+	-- CmpItemKindText = { guibg = NONE, guifg = "#9CDCFE" },
+	-- -- pink
+	-- CmpItemKindFunction = { guibg = NONE, guifg = "#C586C0" },
+	-- CmpItemKindMethod = { guibg = NONE, guifg = "#C586C0" },
+	-- -- front
+	-- CmpItemKindKeyword = { guibg = NONE, guifg = "#D4D4D4" },
+	-- CmpItemKindProperty = { guibg = NONE, guifg = "#D4D4D4" },
+	-- CmpItemKindUnit = { guibg = NONE, guifg = "#D4D4D4" }
 }

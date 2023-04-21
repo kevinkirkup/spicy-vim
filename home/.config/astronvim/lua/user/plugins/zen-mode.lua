@@ -1,5 +1,6 @@
-return function(_, opts)
-	require("zen-mode").setup({
+return {
+	"folke/zen-mode.nvim",
+	opts = {
 		window = {
 			backdrop = 0.8, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
 			width = 120,
@@ -31,5 +32,5 @@ return function(_, opts)
 				font = "+4", -- font size increment
 			},
 		},
-	})
-end
+	},
+}

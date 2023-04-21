@@ -3,7 +3,10 @@ return {
 	{ "romgrk/fzy-lua-native" },
 	{
 		"gelguy/wilder.nvim",
-		dependencies = { "fzy-lua-native", "nvim-web-devicons" },
+		dependencies = {
+			"romgrk/fzy-lua-native",
+			"nvim-tree/nvim-web-devicons",
+		},
 		opts = {
 			modes = { ":", "/", "?" },
 			next_key = "<Tab>",

@@ -1,6 +1,2 @@
 -- Comment plugin
-return {
-  "tpope/vim-commentary",
-  event = "VimEnter",
-  lazy = false,
-}
+return { "tpope/vim-commentary" }

@@ -1,7 +1,5 @@
 return function(_, opts)
-	require("neoscroll").setup({
-		easing_function = "quadratic",
-	})
+	require("neoscroll").setup(opts)
 
 	local t = {}
 	-- Syntax: t[keys] = {function, {function arguments}}
@@ -9,8 +7,14 @@ return function(_, opts)
 	t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "20", [['cubic']] } }
 	t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "20", [['cubic']] } }
 	-- Use the "circular" easing function
-	t["<C-b>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "50", [['cubic']] } }
-	t["<C-f>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "50", [['cubic']] } }
+	t["<C-b>"] = {
+		"scroll",
+		{ "-vim.api.nvim_win_get_height(0)", "true", "50", [['cubic']] },
+	}
+	t["<C-f>"] = {
+		"scroll",
+		{ "vim.api.nvim_win_get_height(0)", "true", "50", [['cubic']] },
+	}
 	-- Pass "nil" to disable the easing animation (constant scrolling speed)
 	t["<C-y>"] = { "scroll", { "-0.10", "false", "100", nil } }
 	t["<C-e>"] = { "scroll", { "0.10", "false", "100", nil } }

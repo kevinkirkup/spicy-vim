@@ -1,4 +1,2 @@
 -- ALE
-return {
-  "dense-analysis/ale"
-}
+return { "dense-analysis/ale" }

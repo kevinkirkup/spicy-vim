@@ -1,4 +1,4 @@
 return {
-  "Rip-Rip/clang_complete",
-  ft = { "c", "cpp" }
+	"Rip-Rip/clang_complete",
+	ft = { "c", "cpp" },
 }

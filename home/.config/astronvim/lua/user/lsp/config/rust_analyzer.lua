@@ -1,5 +1,1 @@
-return {
-    settings = {
-        ["rust-analyzer"] = {}
-    }
-}
+return { settings = { ["rust-analyzer"] = {} } }

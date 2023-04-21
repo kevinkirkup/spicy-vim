@@ -3,8 +3,8 @@ return {
 		undofile = false,
 		compatible = false,
 		termguicolors = true,
-  	foldmethod = "expr",
-  	foldexpr = "nvim_treesitter#foldexpr()",
+		foldmethod = "expr",
+		foldexpr = "nvim_treesitter#foldexpr()",
 	},
 	g = {
 		logging_level = "info",

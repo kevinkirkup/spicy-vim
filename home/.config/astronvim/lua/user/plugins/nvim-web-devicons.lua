@@ -1,7 +1,7 @@
-local icons = require("nvim-web-devicons")
-
-icons.setup({
-	override = {
+return {
+	"nvim-tree/nvim-web-devicons",
+	enabled = vim.g.icons_enabled,
+	opts = {
 		deb = { icon = "", name = "Deb" },
 		lock = { icon = "", name = "Lock" },
 		mp3 = { icon = "", name = "Mp3" },
@@ -15,7 +15,6 @@ icons.setup({
 		xz = { icon = "", name = "Xz" },
 		zip = { icon = "", name = "Zip" },
 	},
-
 	color_icons = true,
 	default = true,
-})
+}

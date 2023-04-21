@@ -1,4 +1,4 @@
 return {
-  "benmills/vimux",
-  commit = "37f4119"
+	"benmills/vimux",
+	commit = "37f4119",
 }

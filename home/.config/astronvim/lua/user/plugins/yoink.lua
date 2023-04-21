@@ -1,6 +1,5 @@
 -- Manage your yank history
 return {
-  "svermeulen/vim-yoink",
-  event = "VimEnter",
-  lazy = false,
+	"svermeulen/vim-yoink",
+	lazy = false,
 }

@@ -1,6 +1,4 @@
 -- Wilder configuration
-
-
 return function(_, opts)
 	local wilder = require("wilder")
 
@@ -22,15 +20,10 @@ return function(_, opts)
 			wilder.substitute_pipeline({
 				pipeline = wilder.python_search_pipeline({
 					skip_cmdtype_check = 1,
-					pattern = wilder.python_fuzzy_pattern({
-						start_at_boundary = 0,
-					}),
+					pattern = wilder.python_fuzzy_pattern({ start_at_boundary = 0 }),
 				}),
 			}),
-			wilder.cmdline_pipeline({
-				fuzzy = 2,
-				fuzzy_filter = wilder.lua_fzy_filter(),
-			}),
+			wilder.cmdline_pipeline({ fuzzy = 2, fuzzy_filter = wilder.lua_fzy_filter() }),
 			{
 				wilder.check(function(ctx, x)
 					return x == ""
@@ -38,9 +31,7 @@ return function(_, opts)
 				wilder.history(),
 			},
 			wilder.python_search_pipeline({
-				pattern = wilder.python_fuzzy_pattern({
-					start_at_boundary = 0,
-				}),
+				pattern = wilder.python_fuzzy_pattern({ start_at_boundary = 0 }),
 			})
 		),
 	})
@@ -62,10 +53,7 @@ return function(_, opts)
 				icons = { ["+"] = "", a = "", h = "" },
 			}),
 		},
-		right = {
-			" ",
-			wilder.popupmenu_scrollbar(),
-		},
+		right = { " ", wilder.popupmenu_scrollbar() },
 	}))
 
 	local wildmenu_renderer = wilder.wildmenu_renderer({

@@ -1,5 +1,2 @@
 -- open URL in browser
-return {
-  "tyru/open-browser.vim",
-  event = "VimEnter"
-}
+return { "tyru/open-browser.vim" }
