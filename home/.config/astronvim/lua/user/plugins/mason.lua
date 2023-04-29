@@ -6,8 +6,6 @@ return {
 				"ansiblels",
 				"clangd",
 				"dockerls",
-				"docker_compose_language_service",
-				"elixirls",
 				"gopls",
 				"jsonls",
 				"lua_ls",
@@ -40,12 +38,10 @@ return {
 				"tflint",
 				"stylua",
 				"rustfmt",
-				"yamlfmt",
 			},
 		},
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
-		tag = "v2.0.1",
 	},
 }

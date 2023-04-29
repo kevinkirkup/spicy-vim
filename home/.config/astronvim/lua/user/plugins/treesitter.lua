@@ -31,13 +31,21 @@ return {
 		-- A list of parser names, or "all"
 		ensure_installed = {
 			"cpp",
-			"elixir",
-			"vim",
-			"lua",
-			"heex",
 			"eex",
-			"rust",
+			"elixir",
+			"git_config",
+			"gitignore",
+			"go",
+			"hcl",
+			"heex",
+			"json",
+			"lua",
 			"python",
+			"rust",
+			"sql",
+			"terraform",
+			"vim",
+			"yaml",
 		},
 		-- List of parsers to ignore installing (for "all")
 		ignore_install = {}, -- List of parsers to ignore installing
