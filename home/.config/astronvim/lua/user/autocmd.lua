@@ -52,7 +52,7 @@ api.nvim_create_autocmd({ "BufWritePre" }, {
 api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*.ex", "*.exs", "*.rs" },
 	group = api.nvim_create_augroup("fmt", { clear = true }),
-	callback = function(ctx)
+	callback = function()
 		vim.cmd("undojoin | Neoformat")
 	end,
 })

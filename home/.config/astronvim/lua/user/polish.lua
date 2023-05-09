@@ -1,1 +1,1 @@
-require "user.autocmd"
+require("user.autocmd")

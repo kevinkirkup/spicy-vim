@@ -2,9 +2,8 @@ return {
 	-- it is recommended to put impatient.nvim before any other plugins
 	{
 		"lewis6991/impatient.nvim",
-		config = function()
-			require("impatient")
-		end,
+		lazy = false,
+		priority = 1,
 	},
 
 	-- Super fast buffer jump

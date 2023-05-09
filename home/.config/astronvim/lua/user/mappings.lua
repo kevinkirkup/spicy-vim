@@ -14,42 +14,42 @@ keymap.set("i", "<c-u>", "<Esc>viwUea")
 keymap.set("i", "<c-t>", "<Esc>b~lea")
 
 -- Paste non-linewise text above or below current line, see https://stackoverflow.com/a/1346777/6064933
-keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line" })
-keymap.set("n", "<leader>P", "m`O<ESC>p``", { desc = "paste above current line" })
+-- keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line" })
+-- keymap.set("n", "<leader>P", "m`O<ESC>p``", { desc = "paste above current line" })
 
 -- Saves the file if modified and quit
-keymap.set("n", "<leader>q", "<cmd>x<cr>", { silent = true, desc = "quit current window" })
+-- keymap.set("n", "<leader>q", "<cmd>x<cr>", { silent = true, desc = "quit current window" })
 
 -- Quit all opened buffers
-keymap.set("n", "<leader>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
+-- keymap.set("n", "<leader>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
 
 -- Open the quickfix windowk
-keymap.set("n", "<leader>w", "<cmd>cwindow<cr>", { silent = true, desc = "open quickfix window" })
+-- keymap.set("n", "<leader>w", "<cmd>cwindow<cr>", { silent = true, desc = "open quickfix window" })
 
 -- Navigation in the location and quickfix list
-keymap.set("n", "[l", "<cmd>lprevious<cr>zv", { silent = true, desc = "previous location item" })
-keymap.set("n", "]l", "<cmd>lnext<cr>zv", { silent = true, desc = "next location item" })
-
-keymap.set("n", "[L", "<cmd>lfirst<cr>zv", { silent = true, desc = "first location item" })
-keymap.set("n", "]L", "<cmd>llast<cr>zv", { silent = true, desc = "last location item" })
-
-keymap.set("n", "[q", "<cmd>cprevious<cr>zv", { silent = true, desc = "previous qf item" })
-keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item" })
-
-keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
-keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
+-- keymap.set("n", "[l", "<cmd>lprevious<cr>zv", { silent = true, desc = "previous location item" })
+-- keymap.set("n", "]l", "<cmd>lnext<cr>zv", { silent = true, desc = "next location item" })
+--
+-- keymap.set("n", "[L", "<cmd>lfirst<cr>zv", { silent = true, desc = "first location item" })
+-- keymap.set("n", "]L", "<cmd>llast<cr>zv", { silent = true, desc = "last location item" })
+--
+-- keymap.set("n", "[q", "<cmd>cprevious<cr>zv", { silent = true, desc = "previous qf item" })
+-- keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item" })
+--
+-- keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
+-- keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
 
 -- Close location list or quickfix list if they are present, see https://superuser.com/q/355325/736190
-keymap.set("n", "<leader>x", "<cmd>window lclose <bar> cclose <cr>", {
-  silent = true,
-  desc = "close qf and location list",
-})
+-- keymap.set("n", "<leader>x", "<cmd>window lclose <bar> cclose <cr>", {
+-- 	silent = true,
+-- 	desc = "close qf and location list",
+-- })
 
 -- Delete a buffer, without closing the window, see https://stackoverflow.com/q/4465095/6064933
-keymap.set("n", "<leader>d", "<cmd>bprevious <bar> bdelete #<cr>", {
-  silent = true,
-  desc = "delete buffer",
-})
+-- keymap.set("n", "<leader>d", "<cmd>bprevious <bar> bdelete #<cr>", {
+-- 	silent = true,
+-- 	desc = "delete buffer",
+-- })
 
 -- Move the cursor based on physical lines, not the actual lines.
 keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
@@ -73,25 +73,25 @@ keymap.set("x", ">", ">gv")
 
 -- Edit and reload nvim config file quickly
 keymap.set("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<cr>", {
-  silent = true,
-  desc = "open init.lua",
+	silent = true,
+	desc = "open init.lua",
 })
 
 keymap.set("n", "<leader>sv", function()
-  vim.cmd([[
+	vim.cmd([[
       update $MYVIMRC
       source $MYVIMRC
     ]])
-  vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
+	vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
 end, {
-  silent = true,
-  desc = "reload init.lua",
+	silent = true,
+	desc = "reload init.lua",
 })
 
 -- Reselect the text that has just been pasted, see also https://stackoverflow.com/a/4317090/6064933.
 keymap.set("n", "<leader>v", "printf('`[%s`]', getregtype()[0])", {
-  expr = true,
-  desc = "reselect last pasted area",
+	expr = true,
+	desc = "reselect last pasted area",
 })
 
 -- Always use very magic mode for searching
@@ -102,7 +102,7 @@ keymap.set("n", "/", [[/\v]])
 
 -- Change current working directory locally and print cwd after that,
 -- see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
-keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>", { desc = "change cwd" })
+-- keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>", { desc = "change cwd" })
 
 -- Use Esc to quit builtin terminal
 keymap.set("t", "<Esc>", [[<c-\><c-n>]])
@@ -141,10 +141,10 @@ keymap.set("x", "p", '"_c<Esc>p')
 
 -- Go to a certain buffer
 keymap.set("n", "gb", '<cmd>call buf_utils#GoToBuffer(v:count, "forward")<cr>', {
-  desc = "go to buffer (forward)",
+	desc = "go to buffer (forward)",
 })
 keymap.set("n", "gB", '<cmd>call buf_utils#GoToBuffer(v:count, "backward")<cr>', {
-  desc = "go to buffer (backward)",
+	desc = "go to buffer (backward)",
 })
 
 -- Text objects for URL
@@ -155,42 +155,42 @@ keymap.set({ "x", "o" }, "iu", "<cmd>call text_obj#URL()<cr>", { desc = "URL tex
 
 -- Do not move my cursor when joining lines.
 keymap.set("n", "J", function()
-  vim.cmd([[
+	vim.cmd([[
       normal! mzJ`z
       delmarks z
     ]])
 end, {
-  desc = "join line",
+	desc = "join line",
 })
 
 keymap.set("n", "gJ", function()
-  -- we must use `normal!`, otherwise it will trigger recursive mapping
-  vim.cmd([[
+	-- we must use `normal!`, otherwise it will trigger recursive mapping
+	vim.cmd([[
       normal! zmgJ`z
       delmarks z
     ]])
 end, {
-  desc = "join visual lines",
+	desc = "join visual lines",
 })
 
 -- Break inserted text into smaller undo units when we insert some punctuation chars.
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
-  keymap.set("i", ch, ch .. "<c-g>u")
+	keymap.set("i", ch, ch .. "<c-g>u")
 end
 
 -- insert semicolon in the end
 keymap.set("i", "<A-;>", "<Esc>miA;<Esc>`ii")
 
 api.nvim_create_autocmd("TextYankPost", {
-  pattern = "*",
-  group = api.nvim_create_augroup("restore_after_yank", { clear = true }),
-  callback = function()
-    vim.cmd([[
+	pattern = "*",
+	group = api.nvim_create_augroup("restore_after_yank", { clear = true }),
+	callback = function()
+		vim.cmd([[
       silent! normal! `y
       silent! delmarks y
     ]])
-  end,
+	end,
 })
 
 -- Go to the beginning and end of current line in insert mode quickly
@@ -202,49 +202,3 @@ keymap.set("c", "<C-A>", "<HOME>")
 
 -- Delete the character to the right of the cursor
 keymap.set("i", "<C-D>", "<DEL>")
-
--- Remove trailing whitespace characters
-keymap.set("n", "<Leader>dd", ":StripTrailingWhitespace<CR>", { silent = true })
-
---------------------------------------------------
--- LeaderF mappings
---------------------------------------------------
-keymap.set("n", "<Leader>ff", ":Leaderf! file<CR>")
-keymap.set("n", "<Leader>fu", ":Leaderf! function --fuzzy<CR>")
-keymap.set("n", "<Leader>fb", ":Leaderf! buffer<CR>")
-keymap.set("n", "<Leader>fg", ":Leaderf! rg -F<CR>")
-
--- keymap.set("n", "<Leader>fw", "printf(':Leaderf! rg -e %s ', \"" .. vim.fn.expand("<cword>") .. "\")<CR>", {
---   expr = true,
---   desc = "Search for current word."
--- })
-
--- search visually selected text literally
--- keymap.set("n", "gf", ":printf('Leaderf! rg -F -e %s ', " .. vim.fn.LeaderFRgVisual() .. ")<CR>", {
---   expr = true,
---   desc = "Search for visual selection."
--- })
--- keymap.set("n", "go", ":Leaderf! rg --recall<CR>")
-
---------------------------------------------------
--- Yoink mappings
---------------------------------------------------
-keymap.set("n", "cy", ":ClearYanks<CR>")
-
--- Rotate through stored yanks
-vim.cmd [[nmap [Y <plug>(YoinkRotateBack)]]
-vim.cmd [[nmap ]Y <plug>(YoinkRotateForward)]]
-
--- Rotate through pasted yank
-vim.cmd [[nmap [y <plug>(YoinkPostPasteSwapBack)]]
-vim.cmd [[nmap ]y <plug>(YoinkPostPasteSwapForward)]]
-
-vim.cmd [[nmap y <plug>(YoinkYankPreserveCursorPosition)]]
-vim.cmd [[xmap y <plug>(YoinkYankPreserveCursorPosition)]]
-
-vim.cmd [[nmap p <plug>(YoinkPaste_p)]]
-vim.cmd [[nmap P <plug>(YoinkPaste_P)]]
-
--- Also replace the default gp with yoink paste so we can toggle paste in this case too
-vim.cmd [[nmap gp <plug>(YoinkPaste_gp)]]
-vim.cmd [[nmap gP <plug>(YoinkPaste_gP)]]
