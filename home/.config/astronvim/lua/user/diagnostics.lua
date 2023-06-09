@@ -1,7 +1,7 @@
 local fn = vim.fn
 local lsp = vim.lsp
 
-lsp.set_log_level("info")
+-- lsp.set_log_level("info")
 
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })

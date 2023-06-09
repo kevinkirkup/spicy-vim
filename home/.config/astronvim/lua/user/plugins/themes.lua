@@ -55,5 +55,6 @@ return {
   -- { "jarodl/cobalt.vim", opt = true },
   -- { "travisjeffery/vim-colors", opt = true },
   -- { "arcticicestudio/nord-vim", opt = true },
-  -- { "mhartington/oceanic-next", opt = true },
+  { "sainnhe/sonokai",          opt = true },
+  { "mhartington/oceanic-next", opt = true },
 }

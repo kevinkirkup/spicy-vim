@@ -4,7 +4,6 @@ return {
 	plugins = {
 		init = {
 			["L3MON4D3/LuaSnip"] = { disable = true },
-			["akinsho/toggleterm.nvim"] = { disable = true },
 		},
 	},
 }

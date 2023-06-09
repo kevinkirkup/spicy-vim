@@ -24,7 +24,7 @@ return {
 			"snippets",
 			"text",
 		},
-		use_treesitter = true,
+		use_treesitter = false,
 	},
 	config = require("user.plugins.configs.indent-blankline"),
 }
