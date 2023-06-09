@@ -1,2 +1,2 @@
 # Spicy-VIM
-VIM configuration files for argrytuna
+VIM configuration files for kevinkirkup
