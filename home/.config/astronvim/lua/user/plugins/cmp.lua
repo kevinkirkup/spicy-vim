@@ -5,13 +5,17 @@ return {
 	{ "honza/vim-snippets", dependencies = { "SirVer/ultisnips" } },
 	{
 		"quangnguyen30192/cmp-nvim-ultisnips",
-		dependencies = { "hrsh7th/nvim-cmp", "SirVer/ultisnips" },
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+			"SirVer/ultisnips",
+			"nvim-treesitter/nvim-treesitter",
+		},
 	},
 	{ "hrsh7th/cmp-cmdline", dependencies = { "hrsh7th/nvim-cmp" } },
 	{ "hrsh7th/cmp-emoji",   dependencies = { "hrsh7th/nvim-cmp" } },
 	{
 		"hrsh7th/nvim-cmp",
-		commit = "a9c701fa7e12e9257b3162000e5288a75d280c28", -- https://github.com/hrsh7th/nvim-cmp/issues/1382
+		-- commit = "a9c701fa7e12e9257b3162000e5288a75d280c28", -- https://github.com/hrsh7th/nvim-cmp/issues/1382
 		dependencies = {
 			"quangnguyen30192/cmp-nvim-ultisnips",
 			"hrsh7th/cmp-buffer",
@@ -38,18 +42,18 @@ return {
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = lspkind_status_ok and lspkind.cmp_format(astronvim.lspkind) or nil,
-					-- format = lspkind.cmp_format({
-					-- 	mode = "symbol_text",
-					-- 	menu = {
-					-- 		nvim_lsp = "[LSP]",
-					-- 		ultisnips = "[US]",
-					-- 		nvim_lua = "[Lua]",
-					-- 		path = "[Path]",
-					-- 		buffer = "[Buffer]",
-					-- 		emoji = "[Emoji]",
-					-- 		omni = "[Omni]"
-					-- 	}
-					-- })
+					format = lspkind.cmp_format({
+						mode = "symbol_text",
+						menu = {
+							nvim_lsp = "[LSP]",
+							ultisnips = "[US]",
+							nvim_lua = "[Lua]",
+							path = "[Path]",
+							buffer = "[Buffer]",
+							emoji = "[Emoji]",
+							omni = "[Omni]",
+						},
+					}),
 				},
 				snippet = {
 					expand = function(args)
