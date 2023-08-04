@@ -2,6 +2,7 @@ if true then
 	return {
 		"elixir-tools/elixir-tools.nvim",
 		ft = { "elixir", "eex", "heex", "surface" },
+		event = { "BufReadPre", "BufNewFile" },
 		keys = {
 			{
 				"<leader>r",
@@ -53,6 +54,7 @@ if true then
 			local elixirls = require("elixir.elixirls")
 
 			elixir.setup({
+				nextls = { enable = true },
 				credo = { enable = false },
 				elixirls = {
 					enabled = true,
