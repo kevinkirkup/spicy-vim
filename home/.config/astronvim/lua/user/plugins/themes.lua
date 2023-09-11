@@ -40,10 +40,6 @@ return {
       end,
     },
   },
-  {
-    "mhartington/oceanic-next",
-    priority = 1000,
-  },
   -- Themes
   -- { "wadackel/vim-dogrun", opt = true },
   -- { "rakr/vim-one", opt = true },
@@ -55,6 +51,10 @@ return {
   -- { "jarodl/cobalt.vim", opt = true },
   -- { "travisjeffery/vim-colors", opt = true },
   -- { "arcticicestudio/nord-vim", opt = true },
-  { "sainnhe/sonokai",          opt = true },
-  { "mhartington/oceanic-next", opt = true },
+  { "sainnhe/sonokai", opts = true },
+  {
+    "mhartington/oceanic-next",
+    priority = 1000,
+    opts = true,
+  },
 }
