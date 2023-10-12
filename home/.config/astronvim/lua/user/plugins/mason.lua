@@ -23,6 +23,7 @@ return {
 	},
 	{
 		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			ensure_installed = {
 				"ansible-lint",
@@ -36,9 +37,11 @@ return {
 				"pyre",
 				"staticcheck",
 				"tflint",
+				"terraform_fmt",
+				"terraform_validate",
 				"stylua",
-				"rustfmt",
 			},
+			automatic_installation = false,
 		},
 	},
 	{
