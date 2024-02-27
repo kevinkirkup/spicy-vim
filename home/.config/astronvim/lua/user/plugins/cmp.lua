@@ -1,7 +1,7 @@
 -- Setup nvim-cmp.
 return {
 	-- Snippets
-	{ "SirVer/ultisnips",   event = "InsertEnter" },
+	{ "SirVer/ultisnips", event = "InsertEnter" },
 	{ "honza/vim-snippets", dependencies = { "SirVer/ultisnips" } },
 	{
 		"quangnguyen30192/cmp-nvim-ultisnips",
@@ -12,7 +12,7 @@ return {
 		},
 	},
 	{ "hrsh7th/cmp-cmdline", dependencies = { "hrsh7th/nvim-cmp" } },
-	{ "hrsh7th/cmp-emoji",   dependencies = { "hrsh7th/nvim-cmp" } },
+	{ "hrsh7th/cmp-emoji", dependencies = { "hrsh7th/nvim-cmp" } },
 	{
 		"hrsh7th/nvim-cmp",
 		-- commit = "a9c701fa7e12e9257b3162000e5288a75d280c28", -- https://github.com/hrsh7th/nvim-cmp/issues/1382
@@ -41,8 +41,8 @@ return {
 				preselect = cmp.PreselectMode.None,
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
-					format = lspkind_status_ok and lspkind.cmp_format(astronvim.lspkind) or nil,
-					format = lspkind.cmp_format({
+					-- format = lspkind_status_ok and lspkind.cmp_format(astronvim.lspkind) or nil,
+					format = lspkind_status_ok and lspkind.cmp_format({
 						mode = "symbol_text",
 						menu = {
 							nvim_lsp = "[LSP]",
@@ -53,7 +53,7 @@ return {
 							emoji = "[Emoji]",
 							omni = "[Omni]",
 						},
-					}),
+					}) or nil,
 				},
 				snippet = {
 					expand = function(args)
@@ -64,7 +64,6 @@ return {
 				duplicates = {
 					nvim_lsp = 1,
 					utlisnips = 1,
-					cmp_tabnine = 1,
 					buffer = 1,
 					path = 1,
 				},
@@ -96,12 +95,13 @@ return {
 					["<Esc>"] = cmp.mapping.close(),
 				}),
 				sources = {
-					{ name = "nvim_lsp" },              -- For nvim-lsp
-					{ name = "ultisnips" },             -- For ultisnips user.
-					{ name = "path" },                  -- for path completion
-					{ name = "buffer",   keyword_length = 2 }, -- for buffer word completion
-					{ name = "omni" },
-					{ name = "emoji",    insert = true }, -- emoji completion
+					{ name = "nvim_lsp", priority = 100 }, -- For nvim-lsp
+					{ name = "ultisnips", keyword_length = 2, priority = 50 }, -- For ultisnips user.
+					{ name = "path", priority = 30 }, -- for path completion
+					{ name = "buffer", keyword_length = 2, priority = 30 }, -- for buffer word completion
+					{ name = "omni", priority = 20 }, -- omni complete
+					{ name = "buffer", priority = 10 }, -- current buffer
+					{ name = "emoji", insert = true, priority = 10 }, -- emoji completion
 				},
 				completion = { keyword_length = 1, completeopt = "menu,noselect" },
 				view = { entries = "custom" },
