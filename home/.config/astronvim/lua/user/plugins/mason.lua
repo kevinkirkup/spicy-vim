@@ -25,6 +25,7 @@ return {
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
+			sources = {},
 			ensure_installed = {
 				"ansible-lint",
 				"flake8",
@@ -37,8 +38,7 @@ return {
 				"pyre",
 				"staticcheck",
 				"tflint",
-				"terraform_fmt",
-				"terraform_validate",
+				"terraform-ls",
 				"stylua",
 			},
 			automatic_installation = false,
